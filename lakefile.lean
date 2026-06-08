@@ -51,6 +51,18 @@ lean_lib Agora where
     `Agora.FormalizationDebt
   ]
 
+@[default_target]
+lean_lib AlienMathematics where
+  roots := #[
+    `AlienMathematics,
+    `Structures.AsymmetricTensors,
+    `Structures.ExactRationalWitness,
+    `Structures.PathologicalLyapunov,
+    `Structures.FractionalCharging,
+    `Structures.SliceConcatenation,
+    `Tests.TestAlienMath
+  ]
+
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4" @ "v4.14.0"
 
