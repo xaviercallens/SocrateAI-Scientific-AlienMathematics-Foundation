@@ -10,6 +10,21 @@ def K (k x : ℕ) : ℤ :=
   ∑ j in Finset.range (k + 1),
     ((-1 : ℤ) ^ j) * (Nat.choose x j : ℤ) * (Nat.choose (21 - x) (k - j) : ℤ)
 
+/-- Krawtchouk polynomial of degree `n` evaluated at `x` using the three-term recurrence relation.
+These polynomials form an orthogonal basis for the space of polynomials
+and are used in the Exact Rational Witness to encode discrete structures. -/
+def K_recurrence (n : ℕ) (x : ℝ) (N : ℕ := 21) (p : ℝ := 1/2) : ℝ :=
+  if n = 0 then 1 else
+  if n > N then 0 else
+  let rec K_aux (k : ℕ) : ℝ :=
+    match k with
+    | 0 => 1
+    | 1 => (2 * (N : ℝ) * p - 1) * x - (N : ℝ) * (1 - p)
+    | k + 2 =>
+      ((2 * (N : ℝ) - 2 * ((k : ℝ) + 1) + 1) * p - 1) * x * K_aux (k + 1) -
+      ((k : ℝ) + 1) * (1 - p) * ((N : ℝ) - ((k : ℝ) + 1) + 1) * K_aux k
+  K_aux n
+
 /-- The Exact Rational Witness function evaluated at Hamming weight w ∈ {0..21}.
     Uses rational coefficients from the alien signal.
     We define it over ℚ to make it fully computable for `decide`. -/
