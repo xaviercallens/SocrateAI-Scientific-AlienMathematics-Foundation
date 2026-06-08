@@ -63,6 +63,7 @@ lean_lib AlienMathematics where
     `Structures.SliceConcatenation,
     `Structures.SelfAvoidingWalks,
     `Structures.CrossingNumbers,
+    `Structures.Krawtchouk,
     `Tests.TestAlienMath
   ]
 

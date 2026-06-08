@@ -6,3 +6,4 @@ import Structures.SliceConcatenation
 import Structures.AsymptoticTensors
 import Structures.SelfAvoidingWalks
 import Structures.CrossingNumbers
+import Structures.Krawtchouk
