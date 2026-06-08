@@ -56,10 +56,13 @@ lean_lib AlienMathematics where
   roots := #[
     `AlienMathematics,
     `Structures.AsymmetricTensors,
+    `Structures.AsymptoticTensors,
     `Structures.ExactRationalWitness,
     `Structures.PathologicalLyapunov,
     `Structures.FractionalCharging,
     `Structures.SliceConcatenation,
+    `Structures.SelfAvoidingWalks,
+    `Structures.CrossingNumbers,
     `Tests.TestAlienMath
   ]
 

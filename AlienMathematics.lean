@@ -3,3 +3,6 @@ import Structures.ExactRationalWitness
 import Structures.PathologicalLyapunov
 import Structures.FractionalCharging
 import Structures.SliceConcatenation
+import Structures.AsymptoticTensors
+import Structures.SelfAvoidingWalks
+import Structures.CrossingNumbers

@@ -1,0 +1,39 @@
+\chapter{Exact Rational Witnesses and Krawtchouk Basis}
+
+\section{The Combinatorial Explosion}
+
+When operating in high-dimensional discrete spaces, optimization problems quickly outgrow floating-point arithmetic. Solvers like Semi-Definite Programming (SDP) return approximate real numbers. However, to formally verify these results in Lean 4, we require \textbf{Exact Rational Witnesses}.
+
+\section{Translating Floats to Fractions}
+
+As criticized by some reviewers, rational coefficients like $17,493/3,114$ appear "mysterious" or arbitrary to a human reader. In reality, they are standard determinantal artifacts.
+
+The pipeline is as follows:
+\begin{enumerate}
+    \item Run an Interior-Point SDP solver to find a floating-point minimum.
+    \item Apply LLL lattice reduction to find the closest rational approximation with a bounded denominator.
+    \item Use Cramér's rule to construct the exact rational determinant.
+    \item Inject this exact witness into Lean 4 via \texttt{native\_decide}.
+\end{enumerate}
+
+\section{The Krawtchouk Polynomials}
+
+To handle the 173-element optimal basis, we utilize the Krawtchouk polynomials, a system of discrete orthogonal polynomials associated with the binomial distribution.
+
+\begin{definition}[Krawtchouk Polynomials]
+The Krawtchouk polynomials $K_k(x; n, p)$ are defined via the three-term recurrence relation.
+\end{definition}
+
+In Lean 4, we define this computationally to allow for rapid discrete evaluation:
+
+\begin{lstlisting}[language=caml, basicstyle=\ttfamily\small, backgroundcolor=\color{lightgray!20}]
+def krawtchouk (n : ℕ) : ℕ → ℝ → ℝ
+  | 0, _ => 1
+  | 1, x => 1 - 2 * x / n
+  | k + 2, x =>
+      let c1 := (n - 2 * x) / (k + 1)
+      let c2 := (n - k) / (k + 1)
+      c1 * krawtchouk n (k + 1) x - c2 * krawtchouk n k x
+\end{lstlisting}
+
+This isolated axiomatic context allows the AI to perform complex discrete algebra without requiring a full PR to \texttt{Mathlib}.
