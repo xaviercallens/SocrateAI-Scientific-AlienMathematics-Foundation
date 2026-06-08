@@ -1,0 +1,58 @@
+name: Lean 4 CI
+
+on:
+  push:
+    branches: [ main, fix/* ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Lean 4
+        run: |
+          # Install Rust (required for Lean 4)
+          curl -sSf https://sh.rustup.rs | sh -s -- -y
+          source ~/.cargo/env
+          # Install Lean 4
+          lean --version
+          # Install Lake (Lean 4 build tool)
+          curl -sSf https://raw.githubusercontent.com/leanprover/lake/main/scripts/install.sh | sh
+          source ~/.profile
+          lake --version
+
+      - name: Cache Lean dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.lake
+            lake-packages
+          key: ${{ runner.os }}-lean-${{ hashFiles('lakefile.lean') }}
+          restore-keys: |
+            ${{ runner.os }}-lean-
+
+      - name: Build project
+        run: lake build
+
+      - name: Run tests
+        run: |
+          # Run all Lean files to check for errors
+          find . -name "*.lean" -type f | xargs -I {} lean --run {}
+
+      - name: Lint code
+        run: |
+          # Check for linter warnings
+          find . -name "*.lean" -type f | xargs -I {} lean --lint {}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: lean-build
+          path: |
+            build/
+            lake-packages/
