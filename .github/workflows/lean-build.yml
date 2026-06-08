@@ -1,0 +1,23 @@
+name: Lean 4 Build Verification
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build and Verify Lean Math
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Lean 4 via elan
+        uses: leanprover/lean-action@v1
+
+      - name: Run lake build
+        run: lake build
