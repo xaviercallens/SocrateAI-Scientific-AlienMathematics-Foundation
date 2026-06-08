@@ -1,0 +1,13 @@
+.DS_Store
+.lake/
+*~
+*.olean
+*.ilean
+*.c
+/proof/
+/build/
+.venv/
+__pycache__/
+*.log
+*.aux
+*.out
