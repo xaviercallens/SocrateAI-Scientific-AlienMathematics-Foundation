@@ -1,20 +1,23 @@
 import Mathlib.Tactic
+import Mathlib.NumberTheory.ModularForms.Basic
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.Data.Real.Basic
+import Mathlib.RingTheory.Algebraic.Basic
+import Mathlib.NumberTheory.LSeries.Basic
 
--- Axiomatic stubs for missing Modular Forms and L-Functions
-axiom ModularFormGamma0 (N : ℕ) : Type
-axiom CuspForm {N : ℕ} (f : ModularFormGamma0 N) : Prop
-axiom HeckeEigenform {N : ℕ} (f : ModularFormGamma0 N) : Prop
-axiom weight_of_form {N : ℕ} (f : ModularFormGamma0 N) : ℕ
+open CongruenceSubgroup
 
--- L-function stub
-axiom L_function {N : ℕ} (f : ModularFormGamma0 N) (s : ℕ) : ℝ
+-- AlgebraicReal replaces the abstract AlgebraicNumber axiom
+abbrev AlgebraicReal := {x : ℝ // IsAlgebraic ℚ x}
 
--- Riemann zeta function stub (or use Mathlib's if it exists, stubbing for safety)
+-- Fourier coefficients of a cusp form
+axiom fourier_coeff {N : ℕ} (f : CuspForm (Gamma0 N) 4) (n : ℕ) : ℂ
+
+-- Hecke eigenform property (Mathlib does not yet have a native HeckeEigenform class for Gamma0)
+axiom HeckeEigenform {N : ℕ} (f : CuspForm (Gamma0 N) 4) : Prop
+
+-- Riemann zeta function stub (Mathlib's `Zeta` is in progress, so we stub its evaluation here)
 axiom zeta_val (s : ℕ) : ℝ
-
--- Algebraic numbers stub
-axiom AlgebraicNumber : Type
-axiom alg_to_real : AlgebraicNumber → ℝ
 
 -- Sunrise integral stub
 axiom sunrise_integral_3_unit_masses : ℝ
@@ -23,6 +26,6 @@ axiom sunrise_integral_3_unit_masses : ℝ
     `S₃(1, 1, 1, 1) = c * L(f, 3) + d * ζ(3)`, where `f` is a weight-4 cuspidal Hecke eigenform
     for `Γ₀(N)` (for some `N`), `L(f, s)` is its L-function, and `c, d` are algebraic numbers. -/
 axiom callens_feynman_sunrise_integral_conjecture (N : ℕ) :
-  ∃ (f : ModularFormGamma0 N), HeckeEigenform f ∧ CuspForm f ∧ weight_of_form f = 4 ∧
-    ∃ (c d : AlgebraicNumber),
-      sunrise_integral_3_unit_masses = alg_to_real c * L_function f 3 + alg_to_real d * zeta_val 3
+  ∃ (f : CuspForm (Gamma0 N) 4), HeckeEigenform f ∧
+    ∃ (c d : AlgebraicReal),
+      (sunrise_integral_3_unit_masses : ℂ) = (c.val : ℂ) * LSeries (fourier_coeff f) 3 + (d.val : ℂ) * (zeta_val 3 : ℂ)

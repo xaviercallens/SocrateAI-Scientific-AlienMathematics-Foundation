@@ -1,11 +1,17 @@
 import Mathlib.Tactic
+import Mathlib.Combinatorics.Enumerative.Partition
+import Mathlib.Data.Multiset.Fold
 
--- Axiomatic stubs for missing or complex Schur polynomial definitions
-axiom IntegerPartition (n : ℕ) : Type
-axiom largest_part {n : ℕ} (lam : IntegerPartition n) : ℕ
+-- Replace the `IntegerPartition` axiom with Mathlib's native `Nat.Partition`
+-- axiom IntegerPartition (n : ℕ) : Type
+-- axiom largest_part {n : ℕ} (lam : IntegerPartition n) : ℕ
+
+/-- The largest part of a partition. -/
+def largest_part {n : ℕ} (lam : Nat.Partition n) : ℕ :=
+  lam.parts.fold max 0
+
 axiom SchurPolynomial (R : Type) : Type
-axiom s_poly {n : ℕ} (lam : IntegerPartition n) : SchurPolynomial ℕ
-axiom single_row_partition (i : ℕ) : IntegerPartition i
+axiom s_poly {n : ℕ} (lam : Nat.Partition n) : SchurPolynomial ℕ
 
 -- Define how a single row Schur polynomial maps for an index i
 axiom single_row_schur (i : ℕ) : SchurPolynomial ℕ
@@ -28,8 +34,8 @@ noncomputable def sum_single_schur : ℕ → SchurPolynomial ℕ
   | 0     => zero_schur
   | (n+1) => sum_single_schur n + single_row_schur n
 
-/-- For any partition `λ` of `n`, there exists an integer `k ≥ 1` such that
-    the plethysm `s_λ ∘ (s_(1) + s_(2) + ... + s_(k))` is Schur-positive.
-    Moreover, `k` is bounded above by `n + λ₁`, where `λ₁` is the largest part of `λ`. -/
-axiom schur_positivity_threshold_conjecture {n : ℕ} (lam : IntegerPartition n) :
+/-- For any partition `lam` of `n`, there exists an integer `k ≥ 1` such that
+    the plethysm `s_lam ∘ (s_(1) + s_(2) + ... + s_(k))` is Schur-positive.
+    Moreover, `k` is bounded above by `n + lam₁`, where `lam₁` is the largest part of `lam`. -/
+axiom schur_positivity_threshold_conjecture {n : ℕ} (lam : Nat.Partition n) :
   ∃ (k : ℕ), 1 ≤ k ∧ k ≤ n + largest_part lam ∧ SchurPositive (plethysm (s_poly lam) (sum_single_schur k))
