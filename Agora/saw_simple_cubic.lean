@@ -165,9 +165,12 @@ lemma Λ_tendsto_zero : Tendsto Λ atTop (𝓝 0) := by
 
 lemma exp_minus_one_asymptotic_equiv :
     (fun n : ℕ => Real.exp (Λ n) - 1) ~[atTop] (fun n : ℕ => Λ n) := by
-  -- Use: if f → 0 and (exp ∘ f - 1) / f → 1, then exp ∘ f - 1 ~ f
-  -- The limit (exp(x)-1)/x → 1 follows from hasDerivAt_exp 0
-  sorry -- NARROWED: composition of exp derivative with Λ_tendsto_zero
+  have h1 : (fun x : ℝ => Real.exp x - 1) ~[𝓝 0] id := by
+    have h := Real.hasDerivAt_exp 0
+    rw [hasDerivAt_iff_isLittleO] at h
+    simp only [Real.exp_zero, smul_eq_mul, mul_one, sub_zero] at h
+    exact h
+  exact h1.comp_tendsto Λ_tendsto_zero
 
 /-- Step 3: The previously monolithic axiom, now PROVED from sub-axioms.
     Uses transitivity of asymptotic equivalence (~). -/
