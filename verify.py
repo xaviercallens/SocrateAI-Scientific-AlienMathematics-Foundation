@@ -64,6 +64,14 @@ MODULES = {
     "tier5_infra": [
         "Agora.FormalizationDebt",
     ],
+    # Tier 6: Callens Conjectures
+    "tier6_callens_conjectures": [
+        "Agora.Conjectures.LatticePacking",
+        "Agora.Conjectures.SchurPositivity",
+        "Agora.Conjectures.TownesSoliton",
+        "Agora.Conjectures.MirrorSymmetry",
+        "Agora.Conjectures.FeynmanSunrise",
+    ],
 }
 
 
@@ -283,6 +291,7 @@ def generate_markdown_report(results: list[ModuleAudit]) -> str:
         ("tier3_axiomatic", "Tier 3: Axiomatic Local Contexts"),
         ("tier4_blueprints", "Tier 4: Heavy Blueprints"),
         ("tier5_infra", "Tier 5: Infrastructure"),
+        ("tier6_callens_conjectures", "Tier 6: Callens Conjectures"),
     ]:
         tier_results = [r for r in results if r.tier == tier_name]
         if not tier_results:

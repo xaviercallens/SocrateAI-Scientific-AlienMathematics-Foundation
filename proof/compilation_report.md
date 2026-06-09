@@ -1,6 +1,6 @@
 # SocrateAI Agora — Lean 4 Compilation Report
 
-**Generated:** 2026-06-09 15:43:48
+**Generated:** 2026-06-09 16:05:25
 **Toolchain:** leanprover/lean4:v4.14.0
 **Mathlib:** v4.14.0
 
@@ -8,58 +8,68 @@
 
 | Metric | Count |
 |--------|-------|
-| Total modules | 17 |
+| Total modules | 22 |
 | 🟢 Verified | 9 |
-| 🟡 Axiom-blocked | 8 |
+| 🟡 Axiom-blocked | 13 |
 | 🟠 Earth-gapped | 0 |
 | 🔴 Sorry-blocked | 0 |
 | ⚪ Build failed | 0 |
 | Total `sorry` | 0 |
-| Total `axiom` | 50 |
+| Total `axiom` | 93 |
 
-**Verification score:** 9/17 modules fully verified (52%)
+**Verification score:** 9/22 modules fully verified (40%)
 
 ### Tier 1: Core Verified
 
 | Status | Module | `sorry` | `axiom` | Build |
 |--------|--------|---------|---------|-------|
-| 🟢 | `Basic` | 0 | 0 | ✔ 1787ms |
-| 🟢 | `AlienMath.TensorDecomposition` | 0 | 0 | ✔ 794ms |
-| 🟢 | `AlienMath.NonCommutativeCryptography` | 0 | 0 | ✔ 1504ms |
-| 🟢 | `AlienMath.LyapunovFunctional` | 0 | 0 | ✔ 1396ms |
-| 🟢 | `AlienMath.Applications.Cryptography` | 0 | 0 | ✔ 959ms |
-| 🟢 | `AlienMath.Applications.Quantum` | 0 | 0 | ✔ 1065ms |
+| 🟢 | `Basic` | 0 | 0 | ✔ 1272ms |
+| 🟢 | `AlienMath.TensorDecomposition` | 0 | 0 | ✔ 800ms |
+| 🟢 | `AlienMath.NonCommutativeCryptography` | 0 | 0 | ✔ 1505ms |
+| 🟢 | `AlienMath.LyapunovFunctional` | 0 | 0 | ✔ 1484ms |
+| 🟢 | `AlienMath.Applications.Cryptography` | 0 | 0 | ✔ 945ms |
+| 🟢 | `AlienMath.Applications.Quantum` | 0 | 0 | ✔ 995ms |
 
 ### Tier 2: Shattered Axiom Proofs
 
 | Status | Module | `sorry` | `axiom` | Build |
 |--------|--------|---------|---------|-------|
-| 🟡 | `saw_simple_cubic` | 0 | 6 | ✔ 1431ms |
-| 🟡 | `AlienMath.StrassenVerified` | 0 | 6 | ✔ 1419ms |
-| 🟡 | `AlienMath.ChargingMatrix` | 0 | 2 | ✔ 1444ms |
+| 🟡 | `saw_simple_cubic` | 0 | 6 | ✔ 1498ms |
+| 🟡 | `AlienMath.StrassenVerified` | 0 | 6 | ✔ 1323ms |
+| 🟡 | `AlienMath.ChargingMatrix` | 0 | 2 | ✔ 1442ms |
 
 ### Tier 3: Axiomatic Local Contexts
 
 | Status | Module | `sorry` | `axiom` | Build |
 |--------|--------|---------|---------|-------|
-| 🟢 | `AlienMath.ExactRationalWitness` | 0 | 0 | ✔ 1441ms |
-| 🟡 | `AlienMath.SliceConcatenation` | 0 | 1 | ✔ 1509ms |
-| 🟢 | `AlienMath.TensorDeformations` | 0 | 0 | ✔ 949ms |
-| 🟡 | `diff_basis_optimal_10000` | 0 | 1 | ✔ 21040ms |
-| 🟡 | `crossing_number_kn` | 0 | 3 | ✔ 1709ms |
+| 🟢 | `AlienMath.ExactRationalWitness` | 0 | 0 | ✔ 1432ms |
+| 🟡 | `AlienMath.SliceConcatenation` | 0 | 1 | ✔ 1381ms |
+| 🟢 | `AlienMath.TensorDeformations` | 0 | 0 | ✔ 937ms |
+| 🟡 | `diff_basis_optimal_10000` | 0 | 1 | ✔ 1404ms |
+| 🟡 | `crossing_number_kn` | 0 | 3 | ✔ 1311ms |
 
 ### Tier 4: Heavy Blueprints
 
 | Status | Module | `sorry` | `axiom` | Build |
 |--------|--------|---------|---------|-------|
-| 🟡 | `E37BSD_v6_blueprint` | 0 | 16 | ✔ 1217ms |
-| 🟡 | `cmi_millennium_blueprints` | 0 | 15 | ✔ 1303ms |
+| 🟡 | `E37BSD_v6_blueprint` | 0 | 16 | ✔ 1213ms |
+| 🟡 | `cmi_millennium_blueprints` | 0 | 15 | ✔ 1324ms |
 
 ### Tier 5: Infrastructure
 
 | Status | Module | `sorry` | `axiom` | Build |
 |--------|--------|---------|---------|-------|
-| 🟢 | `FormalizationDebt` | 0 | 0 | ✔ 812ms |
+| 🟢 | `FormalizationDebt` | 0 | 0 | ✔ 767ms |
+
+### Tier 6: Callens Conjectures
+
+| Status | Module | `sorry` | `axiom` | Build |
+|--------|--------|---------|---------|-------|
+| 🟡 | `Conjectures.LatticePacking` | 0 | 5 | ✔ 963ms |
+| 🟡 | `Conjectures.SchurPositivity` | 0 | 11 | ✔ 1388ms |
+| 🟡 | `Conjectures.TownesSoliton` | 0 | 9 | ✔ 1401ms |
+| 🟡 | `Conjectures.MirrorSymmetry` | 0 | 8 | ✔ 1370ms |
+| 🟡 | `Conjectures.FeynmanSunrise` | 0 | 10 | ✔ 1389ms |
 
 ## Axiom Inventory
 
@@ -128,6 +138,59 @@
 - `hodge_conjecture_cycles`
 - `yang_mills_mass_gap_positive`
 - `poincare_conjecture_homeomorphism`
+
+### `Agora.Conjectures.LatticePacking` (5 axioms)
+- `PackingLattice`
+- `packing_density`
+- `packing_dual`
+- `is_self_dual`
+- `callens_lattice_packing_duality_conjecture`
+
+### `Agora.Conjectures.SchurPositivity` (11 axioms)
+- `IntegerPartition`
+- `largest_part`
+- `SchurPolynomial`
+- `s_poly`
+- `single_row_partition`
+- `single_row_schur`
+- `add_schur`
+- `zero_schur`
+- `plethysm`
+- `SchurPositive`
+- `schur_positivity_threshold_conjecture`
+
+### `Agora.Conjectures.TownesSoliton` (9 axioms)
+- `SobolevH1_R2_C`
+- `norm_L2_sq`
+- `NLS_Energy`
+- `townes_soliton`
+- `dist_H1`
+- `orbit_townes`
+- `dist_to_orbit`
+- `OrbitalStable`
+- `callens_townes_soliton_stability_conjecture`
+
+### `Agora.Conjectures.MirrorSymmetry` (8 axioms)
+- `CalabiYauThreefold`
+- `hodgeNumber`
+- `Mirror`
+- `Db`
+- `TriangulatedEquiv`
+- `BridgelandStabilityCondition`
+- `PreservesStabilityConditions`
+- `callens_CalabiYauMirrorSymmetryConjecture`
+
+### `Agora.Conjectures.FeynmanSunrise` (10 axioms)
+- `ModularFormGamma0`
+- `CuspForm`
+- `HeckeEigenform`
+- `weight_of_form`
+- `L_function`
+- `zeta_val`
+- `AlgebraicNumber`
+- `alg_to_real`
+- `sunrise_integral_3_unit_masses`
+- `callens_feynman_sunrise_integral_conjecture`
 
 ---
 *Report generated by `verify.py` — SocrateAI Scientific Agora*

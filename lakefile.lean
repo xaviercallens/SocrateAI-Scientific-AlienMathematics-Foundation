@@ -48,7 +48,13 @@ lean_lib Agora where
     `Agora.E37BSD_v6_blueprint,
     `Agora.cmi_millennium_blueprints,
     -- Tier 5: Infrastructure
-    `Agora.FormalizationDebt
+    `Agora.FormalizationDebt,
+    -- Tier 6: Callens Conjectures
+    `Agora.Conjectures.LatticePacking,
+    `Agora.Conjectures.SchurPositivity,
+    `Agora.Conjectures.TownesSoliton,
+    `Agora.Conjectures.MirrorSymmetry,
+    `Agora.Conjectures.FeynmanSunrise
   ]
 
 @[default_target]

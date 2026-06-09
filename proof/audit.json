@@ -1,16 +1,16 @@
 {
-  "generated": "2026-06-09T15:43:48.750986",
+  "generated": "2026-06-09T16:05:25.867449",
   "toolchain": "leanprover/lean4:v4.14.0",
   "mathlib": "v4.14.0",
   "summary": {
-    "total": 17,
+    "total": 22,
     "verified": 9,
-    "axiom_blocked": 8,
+    "axiom_blocked": 13,
     "earth_gapped": 0,
     "sorry_blocked": 0,
     "build_failed": 0,
     "total_sorry": 0,
-    "total_axiom": 50
+    "total_axiom": 93
   },
   "modules": [
     {
@@ -22,7 +22,7 @@
       "axiom_count": 0,
       "axiom_names": [],
       "sorry_locations": [],
-      "build_time_ms": 1787,
+      "build_time_ms": 1272,
       "error_messages": []
     },
     {
@@ -34,7 +34,7 @@
       "axiom_count": 0,
       "axiom_names": [],
       "sorry_locations": [],
-      "build_time_ms": 794,
+      "build_time_ms": 800,
       "error_messages": []
     },
     {
@@ -46,7 +46,7 @@
       "axiom_count": 0,
       "axiom_names": [],
       "sorry_locations": [],
-      "build_time_ms": 1504,
+      "build_time_ms": 1505,
       "error_messages": []
     },
     {
@@ -58,7 +58,7 @@
       "axiom_count": 0,
       "axiom_names": [],
       "sorry_locations": [],
-      "build_time_ms": 1396,
+      "build_time_ms": 1484,
       "error_messages": []
     },
     {
@@ -70,7 +70,7 @@
       "axiom_count": 0,
       "axiom_names": [],
       "sorry_locations": [],
-      "build_time_ms": 959,
+      "build_time_ms": 945,
       "error_messages": []
     },
     {
@@ -82,7 +82,7 @@
       "axiom_count": 0,
       "axiom_names": [],
       "sorry_locations": [],
-      "build_time_ms": 1065,
+      "build_time_ms": 995,
       "error_messages": []
     },
     {
@@ -101,7 +101,7 @@
         "\u03bc_Z3_sq_pos"
       ],
       "sorry_locations": [],
-      "build_time_ms": 1431,
+      "build_time_ms": 1498,
       "error_messages": []
     },
     {
@@ -120,7 +120,7 @@
         "optimal_matrix_multiplication"
       ],
       "sorry_locations": [],
-      "build_time_ms": 1419,
+      "build_time_ms": 1323,
       "error_messages": []
     },
     {
@@ -135,7 +135,7 @@
         "holographic_border_rank_bound"
       ],
       "sorry_locations": [],
-      "build_time_ms": 1444,
+      "build_time_ms": 1442,
       "error_messages": []
     },
     {
@@ -147,7 +147,7 @@
       "axiom_count": 0,
       "axiom_names": [],
       "sorry_locations": [],
-      "build_time_ms": 1441,
+      "build_time_ms": 1432,
       "error_messages": []
     },
     {
@@ -161,7 +161,7 @@
         "chi"
       ],
       "sorry_locations": [],
-      "build_time_ms": 1509,
+      "build_time_ms": 1381,
       "error_messages": []
     },
     {
@@ -173,7 +173,7 @@
       "axiom_count": 0,
       "axiom_names": [],
       "sorry_locations": [],
-      "build_time_ms": 949,
+      "build_time_ms": 937,
       "error_messages": []
     },
     {
@@ -187,7 +187,7 @@
         "z3_oracle_certificate"
       ],
       "sorry_locations": [],
-      "build_time_ms": 21040,
+      "build_time_ms": 1404,
       "error_messages": []
     },
     {
@@ -203,7 +203,7 @@
         "crossing_number_kn_conjecture"
       ],
       "sorry_locations": [],
-      "build_time_ms": 1709,
+      "build_time_ms": 1311,
       "error_messages": []
     },
     {
@@ -232,7 +232,7 @@
         "E37_sha_finite"
       ],
       "sorry_locations": [],
-      "build_time_ms": 1217,
+      "build_time_ms": 1213,
       "error_messages": []
     },
     {
@@ -260,7 +260,7 @@
         "poincare_conjecture_homeomorphism"
       ],
       "sorry_locations": [],
-      "build_time_ms": 1303,
+      "build_time_ms": 1324,
       "error_messages": []
     },
     {
@@ -272,7 +272,115 @@
       "axiom_count": 0,
       "axiom_names": [],
       "sorry_locations": [],
-      "build_time_ms": 812,
+      "build_time_ms": 767,
+      "error_messages": []
+    },
+    {
+      "module": "Agora.Conjectures.LatticePacking",
+      "tier": "tier6_callens_conjectures",
+      "status": "axiom_blocked",
+      "build_ok": true,
+      "sorry_count": 0,
+      "axiom_count": 5,
+      "axiom_names": [
+        "PackingLattice",
+        "packing_density",
+        "packing_dual",
+        "is_self_dual",
+        "callens_lattice_packing_duality_conjecture"
+      ],
+      "sorry_locations": [],
+      "build_time_ms": 963,
+      "error_messages": []
+    },
+    {
+      "module": "Agora.Conjectures.SchurPositivity",
+      "tier": "tier6_callens_conjectures",
+      "status": "axiom_blocked",
+      "build_ok": true,
+      "sorry_count": 0,
+      "axiom_count": 11,
+      "axiom_names": [
+        "IntegerPartition",
+        "largest_part",
+        "SchurPolynomial",
+        "s_poly",
+        "single_row_partition",
+        "single_row_schur",
+        "add_schur",
+        "zero_schur",
+        "plethysm",
+        "SchurPositive",
+        "schur_positivity_threshold_conjecture"
+      ],
+      "sorry_locations": [],
+      "build_time_ms": 1388,
+      "error_messages": []
+    },
+    {
+      "module": "Agora.Conjectures.TownesSoliton",
+      "tier": "tier6_callens_conjectures",
+      "status": "axiom_blocked",
+      "build_ok": true,
+      "sorry_count": 0,
+      "axiom_count": 9,
+      "axiom_names": [
+        "SobolevH1_R2_C",
+        "norm_L2_sq",
+        "NLS_Energy",
+        "townes_soliton",
+        "dist_H1",
+        "orbit_townes",
+        "dist_to_orbit",
+        "OrbitalStable",
+        "callens_townes_soliton_stability_conjecture"
+      ],
+      "sorry_locations": [],
+      "build_time_ms": 1401,
+      "error_messages": []
+    },
+    {
+      "module": "Agora.Conjectures.MirrorSymmetry",
+      "tier": "tier6_callens_conjectures",
+      "status": "axiom_blocked",
+      "build_ok": true,
+      "sorry_count": 0,
+      "axiom_count": 8,
+      "axiom_names": [
+        "CalabiYauThreefold",
+        "hodgeNumber",
+        "Mirror",
+        "Db",
+        "TriangulatedEquiv",
+        "BridgelandStabilityCondition",
+        "PreservesStabilityConditions",
+        "callens_CalabiYauMirrorSymmetryConjecture"
+      ],
+      "sorry_locations": [],
+      "build_time_ms": 1370,
+      "error_messages": []
+    },
+    {
+      "module": "Agora.Conjectures.FeynmanSunrise",
+      "tier": "tier6_callens_conjectures",
+      "status": "axiom_blocked",
+      "build_ok": true,
+      "sorry_count": 0,
+      "axiom_count": 10,
+      "axiom_names": [
+        "ModularFormGamma0",
+        "CuspForm",
+        "HeckeEigenform",
+        "weight_of_form",
+        "L_function",
+        "zeta_val",
+        "AlgebraicNumber",
+        "alg_to_real",
+        "sunrise_integral_3_unit_masses",
+        "callens_feynman_sunrise_integral_conjecture"
+      ],
+      "sorry_locations": [],
+      "build_time_ms": 1389,
       "error_messages": []
     }
   ]
