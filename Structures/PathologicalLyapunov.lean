@@ -65,3 +65,14 @@ theorem alien_lyapunov_decay (u u_x u_xx u_xxx u_xxxx : ℝ → ℝ)
     have h3 := term3_nonneg (u_xxxx x)
     linarith
   · exact hnz
+
+/-- Time derivative of the Alien Lyapunov functional under Kawahara flow.
+    The exact algebraic expansion requires applying the Sturm-Picone comparison
+    or rigorous integration by parts which is currently missing. -/
+axiom dV_alien (u : ℝ → ℝ) : ℝ
+
+/-- The pathological Lyapunov functional `V_alien` must have a negative time derivative
+    to bound chaotic systems (e.g., Kuramoto-Sivashinsky or Kawahara equation). -/
+lemma dV_alien_negative (u : ℝ → ℝ) (h_nontrivial : ∃ x, u x ≠ 0) : dV_alien u < 0 := by
+  sorry
+

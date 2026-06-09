@@ -19,3 +19,9 @@ theorem mu3_bound {G : Type*} [MetricSpace G] (S : ℕ → Set G)
     (h : μ₃ ≤ connective_constant S) :
     μ₃ ≤ connective_constant S := by
   exact h
+
+/-- The slice-concatenation operator satisfies sub-additivity.
+    This is required to apply Fekete's Lemma and establish the limit of the connective constant. -/
+lemma slice_concatenation_subadditive {G : Type*} [MetricSpace G] (S : ℕ → Set G) (n m : ℕ) :
+    slice_concatenation S (n + m) ≤ slice_concatenation S n * slice_concatenation (fun i => S (i + n)) m := by
+  sorry

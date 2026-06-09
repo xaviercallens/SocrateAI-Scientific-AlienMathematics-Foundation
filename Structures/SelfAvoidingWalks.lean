@@ -93,7 +93,31 @@ lemma Λ_tendsto_zero : Tendsto Λ atTop (𝓝 0) := by
 
 lemma exp_minus_one_asymptotic_equiv :
     (fun n : ℕ => Real.exp (Λ n) - 1) ~[atTop] (fun n : ℕ => Λ n) := by
-  sorry
+  have hΛ_ne : ∀ᶠ n in atTop, Λ n ≠ 0 := by
+    filter_upwards [eventually_gt_atTop 0] with n hn
+    dsimp [Λ]
+    rw [if_neg (ne_of_gt hn)]
+    have h1 : γ_3_alien - 1 ≠ 0 := by
+      unfold γ_3_alien
+      norm_num
+    have h2 : (n : ℝ) ≠ 0 := Nat.cast_ne_zero.mpr (ne_of_gt hn)
+    exact div_ne_zero (mul_ne_zero (by norm_num) h1) h2
+  have h_deriv : HasDerivAt Real.exp 1 0 := by
+    have h := Real.hasDerivAt_exp 0
+    rwa [Real.exp_zero] at h
+  have h_tendsto : Tendsto (fun t => (Real.exp t - 1) / t) (𝓝[≠] 0) (𝓝 1) := by
+    have h_slope := hasDerivAt_iff_tendsto_slope_zero.mp h_deriv
+    simp only [Real.exp_zero, sub_zero, zero_add, smul_eq_mul] at h_slope
+    have h_rw : (fun t => t⁻¹ * (Real.exp t - 1)) = (fun t => (Real.exp t - 1) / t) := by
+      ext t
+      rw [div_eq_inv_mul, mul_comm]
+    rwa [h_rw] at h_slope
+  have hΛ_punctured : Tendsto Λ atTop (𝓝[≠] 0) :=
+    tendsto_nhdsWithin_of_tendsto_nhds_of_eventually_within Λ Λ_tendsto_zero hΛ_ne
+  apply Asymptotics.isEquivalent_of_tendsto_one
+  · filter_upwards [hΛ_ne] with n hn hnz
+    exact (hn hnz).elim
+  · exact h_tendsto.comp hΛ_punctured
 
 lemma alien_hyper_bridge_lace_converges_refined :
     (fun n : ℕ => (c (n + 2) / c n) / (μ_Z3 ^ 2) - 1)
