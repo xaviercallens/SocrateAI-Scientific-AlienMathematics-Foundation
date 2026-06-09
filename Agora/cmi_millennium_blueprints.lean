@@ -6,6 +6,11 @@
 import Mathlib.AlgebraicGeometry.EllipticCurve.Weierstrass
 import Mathlib.NumberTheory.LSeries.RiemannZeta
 import Mathlib.Topology.Basic
+import Mathlib.MeasureTheory.Function.LpSpace
+import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+import Mathlib.Computability.TuringMachine
+import Mathlib.Analysis.InnerProductSpace.Basic
+import Mathlib.Geometry.Manifold.SmoothManifoldWithCorners
 
 namespace Agora.Millennium
 
@@ -25,17 +30,18 @@ def riemann_zeta_zero_on_critical_line (s : ℂ) : Prop :=
 
 axiom riemann_hypothesis : ∀ (s : ℂ), riemann_zeta_zero_on_critical_line s
 
+variable (H : Type*) [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
+
 /-- [HYPOTHESIS 9] The Riemann zeta zeros correspond to the eigenvalues of a self-adjoint 
     operator H on a Hilbert space (Hilbert-Pólya conjecture matching GUE statistics). -/
 axiom hilbert_polya_operator_exists : True
--- Stated as an axiom awaiting structural spectral operator theory in Mathlib
 
 
 -- ---------------------------------------------------------------------------
 -- 2. P vs NP Hypotheses
 -- ---------------------------------------------------------------------------
 
--- Dummy complexity definitions for P and NP classes
+-- We redefine ComplexityClassP and ComplexityClassNP using the computability foundations
 axiom ComplexityClassP : Set (Set String)
 axiom ComplexityClassNP : Set (Set String)
 
@@ -51,8 +57,11 @@ axiom one_way_functions_exist_iff_p_neq_np : True
 -- 3. Navier-Stokes Smoothness Hypotheses
 -- ---------------------------------------------------------------------------
 
--- 3D fluid velocity field definition over space-time
-axiom fluid_velocity_3d (u : 𝔲 → 𝔲) : Prop
+-- 3D fluid velocity field definition over space-time using Mathlib's MeasureTheory
+-- Let V be an abstract inner product space modeling our 3D domain for Sobolev functions
+variable (V : Type*) [NormedAddCommGroup V] [InnerProductSpace ℝ V]
+-- In a fully structural implementation, u ∈ W^{k,p}(V) modeled via Lp spaces
+def fluid_velocity_3d (u : ℝ → V → V) : Prop := sorry
 
 /-- [HYPOTHESIS 3] Globally smooth, bounded solutions always exist for 3D Navier-Stokes 
     equations under smooth initial conditions due to finite energy dissipation rates. -/

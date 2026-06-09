@@ -31,9 +31,11 @@ def SAWs (n : ℕ) : Set (List LatticeZ3) :=
 
 noncomputable def c (n : ℕ) : ℝ := Nat.card (SAWs n)
 
--- Earth's classical Hammersley-Welsh theorem
-axiom connective_constant_exists : ∃ (μ : ℝ) (hμ : μ > 0),
-  Tendsto (fun n => (c n) ^ (1 / (n : ℝ))) atTop (𝓝 μ)
+-- Earth's classical Hammersley-Welsh theorem (via Fekete's Lemma subadditivity)
+theorem log_c_subadditive (n m : ℕ) : Real.log (c (n + m)) ≤ Real.log (c n) + Real.log (c m) := sorry
+
+theorem connective_constant_exists : ∃ (μ : ℝ) (hμ : μ > 0),
+  Tendsto (fun n => (c n) ^ (1 / (n : ℝ))) atTop (𝓝 μ) := sorry
 
 noncomputable def μ_Z3 : ℝ := Classical.choose connective_constant_exists
 

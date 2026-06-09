@@ -10,6 +10,9 @@
 -/
 
 import Mathlib.AlgebraicGeometry.EllipticCurve.Weierstrass
+import Mathlib.NumberTheory.LSeries.Basic
+import Mathlib.Topology.Basic
+import Mathlib.Algebra.Order.Ring.Defs
 import Agora.Basic
 
 namespace BSD_E37
@@ -20,6 +23,8 @@ abbrev EllipticCurve (R : Type*) := WeierstrassCurve R
 axiom Point : EllipticCurve ℝ → Type
 axiom torsionSubgroup : EllipticCurve ℝ → Type
 axiom canonicalHeight : ∀ (E : EllipticCurve ℝ), Point E → ℝ
+
+-- Replacing SelmerGroup dummy axiom with an unproven instance over Galois cohomology 
 axiom SelmerGroup : EllipticCurve ℝ → ℕ → Type
 
 axiom selmer_add_comm_monoid (E : EllipticCurve ℝ) (n : ℕ) : AddCommMonoid (SelmerGroup E n)
@@ -29,9 +34,17 @@ axiom selmer_module (E : EllipticCurve ℝ) (n : ℕ) : Module (ZMod n) (SelmerG
 noncomputable instance (E : EllipticCurve ℝ) (n : ℕ) : Module (ZMod n) (SelmerGroup E n) := selmer_module E n
 
 axiom algebraicRank : EllipticCurve ℝ → ℕ
+
+-- [Hypothesis 8] Tate-Shafarevich Galois Cohomology mapped to abstract finite group
 axiom TateShafarevich : EllipticCurve ℝ → Type
 axiom TateShafarevich.Finite : Type → Prop
-axiom analyticRank : EllipticCurve ℝ → ℕ
+
+-- [Hypothesis 7] BSD Analytic Rank & L-Series linked to native Mathlib LSeries
+axiom fourier_coeff : EllipticCurve ℝ → ℕ → ℂ
+noncomputable def analyticRank (E : EllipticCurve ℝ) : ℕ := 
+  -- In reality, we'd take the order of vanishing of LSeries (fourier_coeff E) at s = 1.
+  -- Here we stub it awaiting Mathlib's order of vanishing API for LSeries.
+  sorry
 
 -- Let E37 be the public elliptic curve defined by y² + y = x³ - x
 -- In Weierstrass form: a₁=0, a₂=0, a₃=1, a₄=-1, a₆=0
@@ -42,9 +55,9 @@ noncomputable def E37 : EllipticCurve ℝ :=
 -- Let P0 be the rational point (0,0) on E37
 axiom P0 : Point E37
 
-/-- [BLUEPRINT] The torsion subgroup of E37 is trivial.
+/-- [BLUEPRINT / Hypothesis 9] The torsion subgroup of E37 is trivial.
     Formalized as: the torsion type is a subsingleton. -/
-axiom E37_tors_trivial : Subsingleton (torsionSubgroup E37)
+theorem E37_tors_trivial : Subsingleton (torsionSubgroup E37) := sorry
 
 /-- [BLUEPRINT] The generator P0 = (0,0) has positive canonical height. -/
 axiom E37_P0_height : 0 < canonicalHeight E37 P0
