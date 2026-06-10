@@ -16,9 +16,8 @@ theorem pslq_linear_identity
     (h_C_def : C = Real.log 2) -- Placeholder for actual candidate definition
     (h_relation : 3 * T - 2 * C = 0) : -- Placeholder for PSLQ relation
     |3 * T - 2 * C| < 1e-100 := by
-  -- In practice, this requires norm_num or linarith with high precision bounds
-  -- The SymBrain Galois agent fills these in during the proof synthesis phase.
-  sorry
+  rw [h_relation]
+  norm_num
 
 /-- Template for a PSLQ-discovered logarithmic/multiplicative identity -/
 theorem pslq_logarithmic_identity
@@ -27,7 +26,16 @@ theorem pslq_logarithmic_identity
     (h_C_pos : C > 0)
     (h_relation : 2 * Real.log T - 3 * Real.log C = 0) :
     T^2 = C^3 := by
-  -- Follows algebraically from log properties
-  sorry
+  have h1 : Real.log (T^2) = 2 * Real.log T := by
+    exact (Real.log_pow T 2)
+  have h2 : Real.log (C^3) = 3 * Real.log C := by
+    exact (Real.log_pow C 3)
+  have h3 : Real.log (T^2) = Real.log (C^3) := by
+    rw [h1, h2]
+    linarith
+  have h4 := congrArg Real.exp h3
+  rwa [Real.exp_log, Real.exp_log] at h4
+  · exact pow_pos h_C_pos 3
+  · exact pow_pos h_T_pos 2
 
 end Agora.PSLQ

@@ -68,9 +68,11 @@ class NormTransposeInvariant (m n : ℕ) where
 theorem lora_norm_bound {m r n : ℕ}
     (lora : LoRAFactors m r n) :
     ‖deltaW lora‖ ≤ |lora.alpha / (lora.rank : ℝ)| * ‖lora.B‖ * ‖lora.A‖ := by
-  -- The proof uses norm_smul and norm_mul_le (sub-multiplicativity).
-  -- ‖(α/r) • (B * A)‖ = |α/r| * ‖B * A‖ ≤ |α/r| * ‖B‖ * ‖A‖
-  sorry
+  dsimp [deltaW]
+  rw [norm_smul, Real.norm_eq_abs]
+  have h := Matrix.frobenius_norm_mul lora.B lora.A
+  have h2 := mul_le_mul_of_nonneg_left h (abs_nonneg (lora.alpha / (lora.rank : ℝ)))
+  rwa [mul_assoc]
 
 /-! ## Gradient Bounds
 
@@ -95,7 +97,12 @@ theorem lora_gradient_bound_A {m r n k : ℕ}
     (gradY : WeightMatrix m k) :
     ‖(lora.alpha / (lora.rank : ℝ)) • (lora.B.transpose * gradY)‖ ≤
       |lora.alpha / (lora.rank : ℝ)| * ‖lora.B‖ * ‖gradY‖ := by
-  sorry
+  rw [norm_smul, Real.norm_eq_abs]
+  have h := Matrix.frobenius_norm_mul lora.B.transpose gradY
+  have h2 := mul_le_mul_of_nonneg_left h (abs_nonneg (lora.alpha / (lora.rank : ℝ)))
+  have h3 : ‖lora.B.transpose‖ = ‖lora.B‖ := NormTransposeInvariant.norm_transpose lora.B
+  rw [h3] at h2
+  rwa [mul_assoc]
 
 /-- Gradient bound for the B factor.
     ‖∂L/∂B‖ ≤ |α/r| · ‖A‖ · ‖∂L/∂Y‖
@@ -110,7 +117,12 @@ theorem lora_gradient_bound_B {m r n k : ℕ}
     (gradY : WeightMatrix k n) :
     ‖(lora.alpha / (lora.rank : ℝ)) • (gradY * lora.A.transpose)‖ ≤
       |lora.alpha / (lora.rank : ℝ)| * ‖gradY‖ * ‖lora.A‖ := by
-  sorry
+  rw [norm_smul, Real.norm_eq_abs]
+  have h := Matrix.frobenius_norm_mul gradY lora.A.transpose
+  have h2 := mul_le_mul_of_nonneg_left h (abs_nonneg (lora.alpha / (lora.rank : ℝ)))
+  have h3 : ‖lora.A.transpose‖ = ‖lora.A‖ := NormTransposeInvariant.norm_transpose lora.A
+  rw [h3] at h2
+  rwa [mul_assoc]
 
 /-! ## Scaling Factor Properties -/
 

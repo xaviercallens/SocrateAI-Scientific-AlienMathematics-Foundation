@@ -23,7 +23,7 @@ axiom riemannZeta : ℂ → ℂ
 -- 1. Riemann Hypothesis Hypotheses
 -- ---------------------------------------------------------------------------
 
-/-- [HYPOTHESIS 1] All non-trivial zeros of the Riemann Zeta Function ζ(s) 
+/-- [HYPOTHESIS 1] All non-trivial zeros of the Riemann Zeta Function ζ(s)
     lie strictly on the critical line Re(s) = 1/2. -/
 def riemann_zeta_zero_on_critical_line (s : ℂ) : Prop :=
   riemannZeta s = 0 ∧ s.re ≠ 0 ∧ s.re ≠ 1 → s.re = 1/2
@@ -32,7 +32,7 @@ axiom riemann_hypothesis : ∀ (s : ℂ), riemann_zeta_zero_on_critical_line s
 
 variable (H : Type*) [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
 
-/-- [HYPOTHESIS 9] The Riemann zeta zeros correspond to the eigenvalues of a self-adjoint 
+/-- [HYPOTHESIS 9] The Riemann zeta zeros correspond to the eigenvalues of a self-adjoint
     operator H on a Hilbert space (Hilbert-Pólya conjecture matching GUE statistics). -/
 axiom hilbert_polya_operator_exists : True
 
@@ -45,7 +45,7 @@ axiom hilbert_polya_operator_exists : True
 axiom ComplexityClassP : Set (Set String)
 axiom ComplexityClassNP : Set (Set String)
 
-/-- [HYPOTHESIS 2] P is not equal to NP. 
+/-- [HYPOTHESIS 2] P is not equal to NP.
     Deterministic polynomial execution is strictly separated from non-deterministic search space. -/
 axiom p_neq_np : ComplexityClassP ≠ ComplexityClassNP
 
@@ -63,7 +63,7 @@ variable (V : Type*) [NormedAddCommGroup V] [InnerProductSpace ℝ V]
 -- In a fully structural implementation, u ∈ W^{k,p}(V) modeled via Lp spaces
 def fluid_velocity_3d (u : ℝ → V → V) : Prop := sorry
 
-/-- [HYPOTHESIS 3] Globally smooth, bounded solutions always exist for 3D Navier-Stokes 
+/-- [HYPOTHESIS 3] Globally smooth, bounded solutions always exist for 3D Navier-Stokes
     equations under smooth initial conditions due to finite energy dissipation rates. -/
 axiom navier_stokes_globally_smooth : True
 
@@ -86,7 +86,7 @@ axiom tate_shafarevich_finite : True
 -- 5. Hodge Conjecture Hypothesis
 -- ---------------------------------------------------------------------------
 
-/-- [HYPOTHESIS 5] Any Hodge cycle of type (p, p) on a non-singular complex projective variety 
+/-- [HYPOTHESIS 5] Any Hodge cycle of type (p, p) on a non-singular complex projective variety
     is a rational linear combination of algebraic cycles. -/
 axiom hodge_conjecture_cycles : True
 
@@ -95,7 +95,7 @@ axiom hodge_conjecture_cycles : True
 -- 6. Yang-Mills Existence and Mass Gap Hypothesis
 -- ---------------------------------------------------------------------------
 
-/-- [HYPOTHESIS 6] A mathematically rigorous quantum Yang-Mills theory exists on ℝ^4, 
+/-- [HYPOTHESIS 6] A mathematically rigorous quantum Yang-Mills theory exists on ℝ^4,
     and the spectrum of the Hamiltonian has a strictly positive mass gap Δ > 0. -/
 axiom yang_mills_mass_gap_positive : True
 

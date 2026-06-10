@@ -1,13 +1,12 @@
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 import Mathlib.Analysis.SpecialFunctions.ExpDeriv
-import Mathlib.Analysis.Asymptotics.AsymptoticEquivalent
+import Mathlib.Analysis.Subadditive
 import Mathlib.Topology.Instances.Int
 import Mathlib.Data.List.Nodup
 import Mathlib.SetTheory.Cardinal.Finite
 import Mathlib.Tactic
 
-open Filter Asymptotics
-open scoped Topology
+open Filter Asymptotics Set Topology
 
 -- ====================================================================
 -- PART 1: PRIMITIVE EARTH GEOMETRY (Z^3 Lattice)
@@ -34,8 +33,19 @@ noncomputable def c (n : ℕ) : ℝ := Nat.card (SAWs n)
 -- Earth's classical Hammersley-Welsh theorem (via Fekete's Lemma subadditivity)
 theorem log_c_subadditive (n m : ℕ) : Real.log (c (n + m)) ≤ Real.log (c n) + Real.log (c m) := sorry
 
+theorem log_c_bdd_below : BddBelow (range fun n => Real.log (c n) / n) := sorry
+
 theorem connective_constant_exists : ∃ (μ : ℝ) (hμ : μ > 0),
-  Tendsto (fun n => (c n) ^ (1 / (n : ℝ))) atTop (𝓝 μ) := sorry
+  Tendsto (fun n => (c n) ^ (1 / (n : ℝ))) atTop (𝓝 μ) := by
+  have hsub : Subadditive (fun n => Real.log (c n)) := log_c_subadditive
+  have h_lim := hsub.tendsto_lim log_c_bdd_below
+  have H : Tendsto (fun n => Real.exp (Real.log (c n) / n)) atTop (𝓝 (Real.exp hsub.lim)) :=
+    (Real.continuous_exp.tendsto _).comp h_lim
+  refine ⟨Real.exp hsub.lim, Real.exp_pos _, ?_⟩
+  apply Tendsto.congr' _ H
+  filter_upwards [eventually_ne_atTop 0] with n hn
+  -- Algebraically: exp(log(c_n)/n) = (c_n)^(1/n)
+  sorry
 
 noncomputable def μ_Z3 : ℝ := Classical.choose connective_constant_exists
 
