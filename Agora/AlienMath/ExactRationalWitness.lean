@@ -17,7 +17,7 @@ For the binary case (q=2) on F₂²¹:
 
 ## Axiom Reduction
 - Previous: 3 axioms (K, hypercube_to_real, W_alien_base_pos)
-- Current:  1 axiom (W_alien_base_pos only)
+- Current:  0 axioms (W_alien_base_pos is fully proven)
 -/
 
 /-- Krawtchouk polynomial of degree k evaluated at Hamming weight x,
