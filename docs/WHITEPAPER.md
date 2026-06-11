@@ -169,7 +169,7 @@ This protocol does not replace formal verification (which is absolute) but provi
 ## 7. Limitations and Future Work
 
 1. **Constructive models may be overly simple**: Some definitions (e.g., `crossing_number G := 0`) satisfy the type-checker but may not capture the intended mathematical semantics. This is flagged as a known limitation.
-2. **LeanBERT uses mock data**: The current GAN training uses random token sequences rather than a real corpus of Lean 4 tactics. Integration with LeanDojo's extracted tactic data is planned.
+2. **LeanBERT real corpus integration**: The GAN training now uses authentic Lean 4 tactic traces downloaded from `kaiyuy/leandojo-lean4-tacticdata` (HuggingFace). A multi-granular tokenizer covering 60+ Lean 4 tactics with character-level fallback produces training sequences for the `NeuroSymbolicCritic`. Validation scores are now computed on held-out real tactics rather than a hardcoded constant.
 3. **Millennium Prize Blueprints**: The Navier-Stokes and BSD blueprints remain sorry-blocked. Full formalization requires advances in Mathlib's homological algebra infrastructure.
 
 ---
