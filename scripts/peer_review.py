@@ -28,8 +28,8 @@ from dataclasses import dataclass, field
 ALIEN_MATH_DIR = Path(__file__).parent.parent / "Agora" / "AlienMath"
 PROOF_DIR = Path(__file__).parent.parent / "proof"
 
-GEMINI_MODEL = "gemini-2.5-flash"
-MISTRAL_MODEL = "mistral-large-latest"
+GEMINI_MODEL = "gemini-2.5-pro"
+MISTRAL_MODEL = "codestral-latest"
 
 ADVERSARIAL_PROMPT = """You are a senior mathematician and Lean 4 expert conducting a rigorous peer review.
 

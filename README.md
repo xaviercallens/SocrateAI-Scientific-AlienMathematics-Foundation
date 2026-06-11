@@ -99,7 +99,8 @@ SocrateAI-Scientific-AlienMathematics-Foundation/
 │   └── gcp_deploy.sh                        #   GCP Cloud Run deploy script
 │
 ├── scripts/                                 # Utility scripts
-│   ├── peer_review.py                       #   AI adversarial peer review (Gemini + Mistral)
+│   ├── peer_review.py                       #   AI adversarial peer review (Gemini + Codestral)
+│   ├── reproduce.sh                         #   Full reproducibility script (one command)
 │   └── solve_diff_basis_z3.py               #   Z3 SMT solver for difference bases
 │
 ├── verify.py                                # Comprehensive compilation auditor
@@ -110,6 +111,7 @@ SocrateAI-Scientific-AlienMathematics-Foundation/
 ├── docs/                                    # Documentation
 │   ├── ARCHITECTURE.md                      #   Technical architecture
 │   ├── WHITEPAPER.md                        #   Academic whitepaper skeleton
+│   ├── REPRODUCIBILITY.md                   #   Scientific reproducibility guide
 │   └── monograph/                           #   300-page LaTeX monograph
 │
 └── CONTRIBUTING.md                          # Contributor guidelines
@@ -169,6 +171,8 @@ The Alien Mathematics library establishes the following formally verified result
 | [`elan`](https://github.com/leanprover/elan) | latest | Lean 4 toolchain manager |
 | `git` | ≥ 2.30 | Repository clone |
 | Python | ≥ 3.10 | Verification auditor, peer review |
+
+> **One-command reproduction:** For a fully automated pipeline, run `./scripts/reproduce.sh` after cloning. See [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md) for the full scientific reproducibility guide.
 
 ### Step 1: Clone the Repository
 
@@ -295,7 +299,7 @@ python scripts/peer_review.py
 
 The engine:
 1. Reads each `.lean` file in `Agora/AlienMath/`
-2. Sends the source code with a structured adversarial prompt to **Google Gemini** (`gemini-2.5-flash`) and **Mistral AI** (`mistral-large-latest`)
+2. Sends the source code with a structured adversarial prompt to **Google Gemini** (`gemini-2.5-pro` deep-think) and **Mistral Codestral** (`codestral-latest`, specialised for Lean 4 code verification)
 3. Asks each model to identify logical fallacies, circular reasoning, hidden assumptions, and vacuously true definitions
 4. Produces a side-by-side verdict report in `proof/peer_review_report.md`
 

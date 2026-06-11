@@ -154,8 +154,8 @@ $$\text{tr}([q_1, q_2]) = 0$$
 To guard against vacuously true definitions and circular reasoning, we implement an adversarial peer review protocol:
 
 1. Each module is sent to two independent LLM endpoints:
-   - **Google Gemini** (`gemini-2.5-flash`)
-   - **Mistral AI** (`mistral-large-latest`)
+   - **Google Gemini** (`gemini-2.5-pro`)
+   - **Mistral Codestral** (`codestral-latest`)
 2. Each model receives a structured prompt asking it to:
    - Identify logical fallacies or hidden assumptions
    - Check if `noncomputable def` placeholders are vacuously true
