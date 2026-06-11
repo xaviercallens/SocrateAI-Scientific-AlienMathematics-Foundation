@@ -10,7 +10,7 @@ import Mathlib.Combinatorics.SimpleGraph.DegreeSum
 
 ## Overview
 
-This module defines a 4-dimensional non-commutative algebra (the ChargingAlgebra)
+This module defines a 4-dimensional non-commutative algebra (the KalChargingAlgebra)
 and proves algebraic properties of its commutator structure.
 
 ## Peer Review Transparency (v3.0.1)
@@ -21,7 +21,7 @@ and proves algebraic properties of its commutator structure.
 >   and Q-trace theorems are genuine algebraic identities verified by `ring`.
 > - **Section 4 (Graph-Theoretic Charging):** VACUOUS.
 >   `crossing_number := 0` is a placeholder; `omega_bounds_crossings` is `h → h`.
-> - **Non-associativity:** The `ChargingAlgebra.mul` is NOT associative.
+> - **Non-associativity:** The `KalChargingAlgebra.mul` is NOT associative.
 >   E.g., `(i*j)*j` ≠ `i*(j*j)`. This is an intentional feature of the
 >   nilpotent algebra, not a bug, but must be explicitly documented.
 > - **ω = 2 claim:** The narrative connecting this algebra to matrix
@@ -31,7 +31,7 @@ and proves algebraic properties of its commutator structure.
 
 ## What IS Formally Verified
 
-- The `ChargingAlgebra` is a well-defined 4D real algebra with explicit
+- The `KalChargingAlgebra` is a well-defined 4D real algebra with explicit
   multiplication rules.
 - The commutator `[q₁, q₂]` has zero trace (Lemma 1), zero imaginary
   components (Lemma 2), and lives purely in the ε-channel (Lemma 3).
@@ -66,14 +66,14 @@ Components:
   • `i`   — first imaginary basis (non-commutative)
   • `j`   — second imaginary basis (non-commutative)
   • `ε`   — nilpotent charge (ε² = 0, the annihilation channel) -/
-structure ChargingAlgebra where
+structure KalChargingAlgebra where
   re : ℝ
   i  : ℝ
   j  : ℝ
   ε  : ℝ
 
-instance : Zero ChargingAlgebra := ⟨⟨0, 0, 0, 0⟩⟩
-instance : One ChargingAlgebra := ⟨⟨1, 0, 0, 0⟩⟩
+instance : Zero KalChargingAlgebra := ⟨⟨0, 0, 0, 0⟩⟩
+instance : One KalChargingAlgebra := ⟨⟨1, 0, 0, 0⟩⟩
 
 /-- Non-commutative multiplication in the Charging Algebra.
 
@@ -87,24 +87,24 @@ The key insight: when two error terms E₁ and E₂ from overlapping
 sub-tensors are mapped into this algebra, their product
 E₁ · E₂ + E₂ · E₁ evaluates to zero due to the commutator
 structure, without requiring explicit computation. -/
-def ChargingAlgebra.mul (q₁ q₂ : ChargingAlgebra) : ChargingAlgebra :=
+def KalChargingAlgebra.mul (q₁ q₂ : KalChargingAlgebra) : KalChargingAlgebra :=
   { re := q₁.re * q₂.re - q₁.i * q₂.i - q₁.j * q₂.j,
     i  := q₁.re * q₂.i + q₁.i * q₂.re,
     j  := q₁.re * q₂.j + q₁.j * q₂.re,
     ε  := q₁.re * q₂.ε + q₁.ε * q₂.re + q₁.i * q₂.j - q₁.j * q₂.i }
 
 /-- The commutator [A, B] = AB - BA in the Charging Algebra. -/
-def ChargingAlgebra.commutator (q₁ q₂ : ChargingAlgebra) : ChargingAlgebra :=
+def KalChargingAlgebra.commutator (q₁ q₂ : KalChargingAlgebra) : KalChargingAlgebra :=
   { re := (q₁.mul q₂).re - (q₂.mul q₁).re,
     i  := (q₁.mul q₂).i  - (q₂.mul q₁).i,
     j  := (q₁.mul q₂).j  - (q₂.mul q₁).j,
     ε  := (q₁.mul q₂).ε  - (q₂.mul q₁).ε }
 
-/-- The trace of a ChargingAlgebra element is its real (scalar) part.
+/-- The trace of a KalChargingAlgebra element is its real (scalar) part.
 In the holographic interpretation, only the trace contributes to the
 final matrix product; all non-commutative components are "interior"
 and annihilate upon contraction to the boundary. -/
-def ChargingAlgebra.trace (q : ChargingAlgebra) : ℝ := q.re
+def KalChargingAlgebra.trace (q : KalChargingAlgebra) : ℝ := q.re
 
 -- ====================================================================
 -- SECTION 2: Verified Annihilation Lemmas
@@ -117,39 +117,39 @@ interior and vanish when projected to the holographic boundary.
 
 Proof: Pure algebra. The real parts of AB and BA are identical
 (commutativity of ℝ), so their difference is zero. -/
-theorem commutator_trace_vanishes (q₁ q₂ : ChargingAlgebra) :
-    (ChargingAlgebra.commutator q₁ q₂).trace = 0 := by
-  simp [ChargingAlgebra.commutator, ChargingAlgebra.mul, ChargingAlgebra.trace]
+theorem commutator_trace_vanishes (q₁ q₂ : KalChargingAlgebra) :
+    (KalChargingAlgebra.commutator q₁ q₂).trace = 0 := by
+  simp [KalChargingAlgebra.commutator, KalChargingAlgebra.mul, KalChargingAlgebra.trace]
   ring
 
 /-- **Annihilation Lemma 2**: The imaginary parts of the commutator
 also vanish. The commutator lives entirely in the ε-channel. -/
-theorem commutator_imaginary_vanishes (q₁ q₂ : ChargingAlgebra) :
-    (ChargingAlgebra.commutator q₁ q₂).i = 0 ∧
-    (ChargingAlgebra.commutator q₁ q₂).j = 0 := by
-  constructor <;> simp [ChargingAlgebra.commutator, ChargingAlgebra.mul] <;> ring
+theorem commutator_imaginary_vanishes (q₁ q₂ : KalChargingAlgebra) :
+    (KalChargingAlgebra.commutator q₁ q₂).i = 0 ∧
+    (KalChargingAlgebra.commutator q₁ q₂).j = 0 := by
+  constructor <;> simp [KalChargingAlgebra.commutator, KalChargingAlgebra.mul] <;> ring
 
 /-- **Annihilation Lemma 3**: The commutator is purely in the ε-channel.
 This means all non-commutativity is concentrated in the nilpotent
 direction, which squares to zero during tensor contraction. -/
-theorem commutator_is_pure_epsilon (q₁ q₂ : ChargingAlgebra) :
-    (ChargingAlgebra.commutator q₁ q₂).re = 0 ∧
-    (ChargingAlgebra.commutator q₁ q₂).i = 0 ∧
-    (ChargingAlgebra.commutator q₁ q₂).j = 0 := by
+theorem commutator_is_pure_epsilon (q₁ q₂ : KalChargingAlgebra) :
+    (KalChargingAlgebra.commutator q₁ q₂).re = 0 ∧
+    (KalChargingAlgebra.commutator q₁ q₂).i = 0 ∧
+    (KalChargingAlgebra.commutator q₁ q₂).j = 0 := by
   refine ⟨?_, ?_, ?_⟩ <;>
-    simp [ChargingAlgebra.commutator, ChargingAlgebra.mul] <;> ring
+    simp [KalChargingAlgebra.commutator, KalChargingAlgebra.mul] <;> ring
 
 /-- The ε-channel of the commutator captures the asymmetry:
 [q₁, q₂].ε = 2(q₁.i · q₂.j - q₁.j · q₂.i).
 This is the "winding number" of the tensor flow. -/
-theorem commutator_epsilon_formula (q₁ q₂ : ChargingAlgebra) :
-    (ChargingAlgebra.commutator q₁ q₂).ε =
+theorem commutator_epsilon_formula (q₁ q₂ : KalChargingAlgebra) :
+    (KalChargingAlgebra.commutator q₁ q₂).ε =
     2 * (q₁.i * q₂.j - q₁.j * q₂.i) := by
-  simp [ChargingAlgebra.commutator, ChargingAlgebra.mul]
+  simp [KalChargingAlgebra.commutator, KalChargingAlgebra.mul]
   ring
 
 -- ====================================================================
--- SECTION 3: The Charging Map Q — Matrix → ChargingAlgebra
+-- SECTION 3: The Charging Map Q — Matrix → KalChargingAlgebra
 -- ====================================================================
 
 /-- The charging map Q projects a pair of real matrix entries into
@@ -158,7 +158,7 @@ to the j-axis, and their interaction generates ε-charge.
 
 This is the gateway between Earth's commutative linear algebra
 and the alien's non-commutative tensor space. -/
-def Q (a_row b_col : ℝ) : ChargingAlgebra :=
+def Q (a_row b_col : ℝ) : KalChargingAlgebra :=
   { re := a_row * b_col,
     i  := a_row,
     j  := b_col,
@@ -170,13 +170,13 @@ when projected back to the boundary, it reproduces exactly the
 classical product. -/
 theorem Q_trace_is_product (a b : ℝ) :
     (Q a b).trace = a * b := by
-  simp [Q, ChargingAlgebra.trace]
+  simp [Q, KalChargingAlgebra.trace]
 
 /-- Cross-term annihilation: When two Q-mapped entries interact
 via the commutator, the trace contribution is exactly zero.
 This is the formal proof that "error terms cancel for free." -/
 theorem Q_cross_term_annihilation (a₁ b₁ a₂ b₂ : ℝ) :
-    (ChargingAlgebra.commutator (Q a₁ b₁) (Q a₂ b₂)).trace = 0 := by
+    (KalChargingAlgebra.commutator (Q a₁ b₁) (Q a₂ b₂)).trace = 0 := by
   exact commutator_trace_vanishes (Q a₁ b₁) (Q a₂ b₂)
 
 -- ====================================================================
@@ -251,5 +251,5 @@ end Agora.AlienMath
 --   • omega_bounds_crossings              [tautology] — h → h
 --
 -- KNOWN LIMITATION:
---   • ChargingAlgebra.mul is NON-ASSOCIATIVE by design.
+--   • KalChargingAlgebra.mul is NON-ASSOCIATIVE by design.
 -- ====================================================================

@@ -12,7 +12,7 @@ namespace Agora.AlienMath
 ## H2 Implementation — Axiom Reduction
 
 Replaced 2 of 3 axioms:
-- `connective_constant`: now defined via Filter.limsup (standard definition)
+- `kal_connective_constant`: now defined via Filter.limsup (standard definition)
 - `limsup_seq`: now uses Mathlib's Filter.limsup directly
 - `chi`: retained as noncomputable placeholder (full Euler characteristic
   requires algebraic topology infrastructure not yet in Mathlib4)
@@ -70,17 +70,17 @@ The constants 13/7 and exponent 5 arise from the polymer physics
 model of self-avoiding walks on Z³. The 13/7 factor is the
 conjectured critical amplitude ratio, and the 5th power corresponds
 to the spatial dimension augmented by the topological charge. -/
-noncomputable def slice_concatenation {G : Type*} [MetricSpace G]
+noncomputable def kal_slice_concatenation {G : Type*} [MetricSpace G]
     (S : ℕ → Set G) (n : ℕ) : ℝ :=
   (13/7) * ∏ i in Finset.range n, (chi (S i ∩ S (i + 1)))^5
 
 /-- **Genuine theorem:** The slice-concatenation operator is non-negative.
 Since chi ≥ 0 and 13/7 > 0, the product of non-negative even powers
 weighted by a positive constant is non-negative. -/
-theorem slice_concatenation_nonneg {G : Type*} [MetricSpace G]
+theorem kal_slice_concatenation_nonneg {G : Type*} [MetricSpace G]
     (S : ℕ → Set G) (n : ℕ) :
-    slice_concatenation S n ≥ 0 := by
-  unfold slice_concatenation
+    kal_slice_concatenation S n ≥ 0 := by
+  unfold kal_slice_concatenation
   apply mul_nonneg
   · norm_num
   · apply Finset.prod_nonneg
@@ -90,9 +90,9 @@ theorem slice_concatenation_nonneg {G : Type*} [MetricSpace G]
 /-- The connective constant μ₃ for a metric space G.
 Defined as the limsup of the n-th root of the slice-concatenation operator.
 This is the standard definition from polymer physics. -/
-noncomputable def connective_constant {G : Type*} [MetricSpace G]
+noncomputable def kal_connective_constant {G : Type*} [MetricSpace G]
     (S : ℕ → Set G) : ℝ :=
-  Filter.limsup (fun n => (slice_concatenation S n) ^ ((1 : ℝ) / n)) Filter.atTop
+  Filter.limsup (fun n => (kal_slice_concatenation S n) ^ ((1 : ℝ) / n)) Filter.atTop
 
 /-- **TAUTOLOGY (retained for API compatibility):**
 This theorem is logically `h → h`. It is retained as a definitional
@@ -104,8 +104,8 @@ A genuine connective constant bound would require proving
 of the free energy, which requires Mathlib's `Subadditive` API. -/
 theorem mu3_bound {G : Type*} [MetricSpace G] (S : ℕ → Set G)
     (μ₃ : ℝ)
-    (h : μ₃ ≤ connective_constant S) :
-    μ₃ ≤ connective_constant S := by
+    (h : μ₃ ≤ kal_connective_constant S) :
+    μ₃ ≤ kal_connective_constant S := by
   exact h
 
 end Agora.AlienMath

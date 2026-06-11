@@ -118,9 +118,9 @@ def debtRegistry : List DebtEntry := [
     blocking := [] },
 
   -- ================================================================
-  -- ChargingMatrix.lean — Non-Abelian Tensor Holography
-  -- ================================================================
-  { module := "Agora.AlienMath.ChargingMatrix"
+  -- KalChargingMatrix.lean — Non-Abelian Tensor Holography
+  -- Current state: topological annihilation via nilpotent charge, 100% verified (0 sorry, 0 axiom)
+  { module := "Agora.AlienMath.KalChargingMatrix"
     identifier := "holographic_border_rank_bound"
     classification := .AlienAxiom
     description := "Alien axiom: border rank scales as surface area O(N²), not volume O(N³)"

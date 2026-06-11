@@ -16,7 +16,7 @@ namespace Agora.AlienMath.TensorDecomposition
 > - The comments claim breakthrough results about tensor rank (rank 26
 >   for 4×4 matrix multiplication), but NO formal statements or proofs
 >   exist to support these claims.
-> - The algebraic properties of `PhaseWeight` (multiplication, nilpotency
+> - The algebraic properties of `KalPhaseWeight` (multiplication, nilpotency
 >   of `e`) are NOT defined. Without these, the data cannot be
 >   interpreted as a tensor decomposition.
 > - **Status:** This module is a DATA SCAFFOLD. It defines types and
@@ -24,20 +24,20 @@ namespace Agora.AlienMath.TensorDecomposition
 
 ## What IS Formally Verified
 
-- The types `PhaseWeight` and `HoloNode` are well-formed Lean 4 definitions.
+- The types `KalPhaseWeight` and `HoloNode` are well-formed Lean 4 definitions.
 - The example basis `extract_4x4_holographic_basis` is a valid `List HoloNode`.
 - JSON serialization/deserialization is derived for interoperability.
 
 ## What Is NOT Formally Verified
 
 - Any theorem about tensor decomposition or rank.
-- Algebraic properties of `PhaseWeight` (multiplication, nilpotency).
+- Algebraic properties of `KalPhaseWeight` (multiplication, nilpotency).
 - That `extract_4x4_holographic_basis` represents a valid decomposition.
 -/
 
 -- The topological phase weights used in the Alien Charging Matrix.
 -- 'e' represents the nilpotent boundary operator (ε).
-inductive PhaseWeight
+inductive KalPhaseWeight
   | zero
   | one
   | neg_one
@@ -52,9 +52,9 @@ inductive PhaseWeight
 -- Here, they are xenotopological phases.
 structure HoloNode where
   node_id : Nat
-  U_sub : List (List PhaseWeight)
-  V_sub : List (List PhaseWeight)
-  W_sub : List (List PhaseWeight)
+  U_sub : List (List KalPhaseWeight)
+  V_sub : List (List KalPhaseWeight)
+  W_sub : List (List KalPhaseWeight)
   deriving Repr, ToJson, FromJson
 
 /-- The extracted alien border rank basis.
@@ -64,14 +64,14 @@ structure HoloNode where
 def extract_4x4_holographic_basis : List HoloNode :=
   [
     { node_id := 1,
-      U_sub := [[PhaseWeight.one, PhaseWeight.e], [PhaseWeight.neg_e, PhaseWeight.zero]],
-      V_sub := [[PhaseWeight.one, PhaseWeight.neg_e], [PhaseWeight.e, PhaseWeight.zero]],
-      W_sub := [[PhaseWeight.zero, PhaseWeight.one], [PhaseWeight.one, PhaseWeight.zero]]
+      U_sub := [[KalPhaseWeight.one, KalPhaseWeight.e], [KalPhaseWeight.neg_e, KalPhaseWeight.zero]],
+      V_sub := [[KalPhaseWeight.one, KalPhaseWeight.neg_e], [KalPhaseWeight.e, KalPhaseWeight.zero]],
+      W_sub := [[KalPhaseWeight.zero, KalPhaseWeight.one], [KalPhaseWeight.one, KalPhaseWeight.zero]]
     },
     { node_id := 2,
-      U_sub := [[PhaseWeight.neg_one, PhaseWeight.zero], [PhaseWeight.one, PhaseWeight.neg_one]],
-      V_sub := [[PhaseWeight.zero, PhaseWeight.one], [PhaseWeight.neg_one, PhaseWeight.neg_one]],
-      W_sub := [[PhaseWeight.one, PhaseWeight.zero], [PhaseWeight.neg_e, PhaseWeight.e]]
+      U_sub := [[KalPhaseWeight.neg_one, KalPhaseWeight.zero], [KalPhaseWeight.one, KalPhaseWeight.neg_one]],
+      V_sub := [[KalPhaseWeight.zero, KalPhaseWeight.one], [KalPhaseWeight.neg_one, KalPhaseWeight.neg_one]],
+      W_sub := [[KalPhaseWeight.one, KalPhaseWeight.zero], [KalPhaseWeight.neg_e, KalPhaseWeight.e]]
     }
   ]
 

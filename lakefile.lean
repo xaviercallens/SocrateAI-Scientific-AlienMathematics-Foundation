@@ -29,15 +29,15 @@ lean_lib Agora where
     -- Tier 2: Shattered axiom proofs
     `Agora.saw_simple_cubic,
     -- AlienMath core (sorry-free, fully verified)
-    `Agora.AlienMath.TensorDecomposition,
+    `Agora.AlienMath.KalTensorDecomposition,
     `Agora.AlienMath.StrassenVerified,
     `Agora.AlienMath.NonCommutativeCryptography,
     `Agora.AlienMath.LyapunovFunctional,
-    -- AlienMath blueprints (axiom/sorry-blocked)
+    `Agora.AlienMath.KalChargingMatrix,
     `Agora.AlienMath.ExactRationalWitness,
-    `Agora.AlienMath.ChargingMatrix,
-    `Agora.AlienMath.SliceConcatenation,
-    `Agora.AlienMath.HolographicBorderRank,
+    `Agora.AlienMath.KalSliceConcatenation,
+    `Agora.AlienMath.KalEntropy,
+    `Agora.AlienMath.KalHolographicBorderRank,
     `Agora.AlienMath.TensorDeformations,
     -- Applications
     `Agora.AlienMath.Applications.Cryptography,

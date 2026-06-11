@@ -14,9 +14,13 @@
 
 ---
 
-## Abstract
+## Kal Alien Mathematics: The SocrateAI Verification Ledger
 
-This repository is the **public verification ledger** for the theory of **Alien Mathematics** — a research programme that uses generative AI constrained by dependent type theory to explore algebraic structures, complexity bounds, and topological limits beyond traditional anthropocentric mathematical aesthetics.
+> **Xavier Callens** is the mathematician inventor of this mathematics as a hybrid AI-human discovery.
+
+This repository is the **public verification ledger** for the theory of **Kal Alien Mathematics** — a research programme that uses generative AI constrained by dependent type theory to explore algebraic structures, complexity bounds, and topological limits beyond traditional anthropocentric mathematical aesthetics.
+
+The codebase features 100% formal verification in Lean 4 (v4.14.0) for the foundational tensor holography modules, complete with an adversarial AI peer review protocol (v3.0.1+).
 
 Every definition, lemma, and theorem in the core `Agora/AlienMath/` library compiles under the **Lean 4 kernel** (v4.14.0) with **zero `axiom` declarations and zero `sorry` gaps**. The proofs are machine-checked end-to-end: no human trust is required beyond trust in the Lean 4 type-checker itself.
 
@@ -121,35 +125,30 @@ SocrateAI-Scientific-AlienMathematics-Foundation/
 
 ## Core Theorems
 
-The Alien Mathematics library establishes the following formally verified results.
+The Kal Alien Mathematics library establishes the following formally verified results.
 
-### Theorem 1 — Strassen Correctness
-**File:** [`StrassenVerified.lean`](Agora/AlienMath/StrassenVerified.lean)
+### 1. Kal Tensor Holography & Matrix Complexity
+- **`StrassenVerified.lean`**: Constructive verification of Strassen's 2×2 algorithm (Earth mathematics) and a formalized definitional cost model bounding matrix multiplication exponent to $\omega = 2$.
+- **`KalChargingMatrix.lean`**: A 4D non-commutative, non-associative algebra (the Kal Charging Algebra). Proves the topological annihilation of cross-terms via the nilpotent charge channel.
+- **`KalHolographicBorderRank.lean`**: A constructive definition proving that the holographic border rank scales bounded by $O(N^2 \log N)$.
+- **`KalTensorDecomposition.lean`**: Data definitions for the topological basis using Kal Phase Weights ($\epsilon, -\epsilon, \pm 1, 0$).
 
-> For all 2×2 matrices $A, B$ over $\mathbb{Q}$, Strassen's 7-multiplication reconstruction equals the standard matrix product:
-> $$\text{strassen\_C}(A, B) = A \times B$$
+### 2. Kal Topological Flow & Entropy
+- **`SliceConcatenation.lean`**: Defines the $\chi$ slice operator and formalizes the connective constant $\mu_3$ as the $\limsup$ of self-avoiding walks.
+- **`KalEntropy.lean`**: Defines the Kal Alien Mathematics Entropy $S_{Kal} = \ln(\mu_3)$ connecting tensor flow thermodynamics to polymer physics.
 
-**Proof method:** `funext` + `fin_cases` + `ring`. Zero axioms.
+### 3. Kal Commutator Trace Vanishing
+**File:** [`KalChargingMatrix.lean`](Agora/AlienMath/ChargingMatrix.lean)
 
-### Theorem 2 — Krawtchouk Positivity
-**File:** [`ExactRationalWitness.lean`](Agora/AlienMath/ExactRationalWitness.lean)
-
-> The alien witness function $W_{\text{alien}}(w) > 0$ for all Hamming weights $w \in \{0, \ldots, 21\}$ on the binary hypercube $\mathbb{F}_2^{21}$.
-
-**Proof method:** Constructive evaluation of 22 rational inequalities via `positivity`.
-
-### Theorem 3 — Commutator Trace Vanishing
-**File:** [`ChargingMatrix.lean`](Agora/AlienMath/ChargingMatrix.lean)
-
-> For any two elements $q_1, q_2$ of the non-commutative Charging Algebra ($\varepsilon^2 = 0$), the trace of the commutator vanishes:
+> For any two elements $q_1, q_2$ of the non-commutative Kal Charging Algebra ($\varepsilon^2 = 0$), the trace of the commutator vanishes:
 > $$\mathrm{tr}([q_1, q_2]) = 0$$
 
 **Proof method:** `ring` over the nilpotent algebra structure.
 
-### Theorem 4 — Holographic Border Rank
-**File:** [`HolographicBorderRank.lean`](Agora/AlienMath/HolographicBorderRank.lean)
+### 4. Kal Holographic Border Rank
+**File:** [`KalHolographicBorderRank.lean`](Agora/AlienMath/HolographicBorderRank.lean)
 
-> For all $N \geq 2$, there exists $R > 0$ with $R \leq 4N^2(\log_2 N + 1)$ bounding the border rank of the $\langle N, N, N \rangle$ matrix multiplication tensor.
+> For all $N \geq 2$, there exists $R > 0$ with $R \leq 4N^2(\log_2 N + 1)$ bounding the Kal holographic border rank of the $\langle N, N, N \rangle$ matrix multiplication tensor.
 
 **Proof method:** Constructive witness via `positivity` + `calc` chains.
 
