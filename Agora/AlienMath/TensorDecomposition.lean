@@ -5,6 +5,36 @@ open Lean
 
 namespace Agora.AlienMath.TensorDecomposition
 
+/-!
+# Tensor Decomposition — Data Definitions
+
+## Peer Review Transparency (v3.0.1)
+
+> **AI Peer Review Finding (Gemini 2.5 Pro, 2026-06-11):**
+> - This module contains ONLY data definitions (`inductive`, `structure`,
+>   `def`). It asserts NO propositions and proves NO theorems.
+> - The comments claim breakthrough results about tensor rank (rank 26
+>   for 4×4 matrix multiplication), but NO formal statements or proofs
+>   exist to support these claims.
+> - The algebraic properties of `PhaseWeight` (multiplication, nilpotency
+>   of `e`) are NOT defined. Without these, the data cannot be
+>   interpreted as a tensor decomposition.
+> - **Status:** This module is a DATA SCAFFOLD. It defines types and
+>   constructs example values. Mathematical theorems are needed.
+
+## What IS Formally Verified
+
+- The types `PhaseWeight` and `HoloNode` are well-formed Lean 4 definitions.
+- The example basis `extract_4x4_holographic_basis` is a valid `List HoloNode`.
+- JSON serialization/deserialization is derived for interoperability.
+
+## What Is NOT Formally Verified
+
+- Any theorem about tensor decomposition or rank.
+- Algebraic properties of `PhaseWeight` (multiplication, nilpotency).
+- That `extract_4x4_holographic_basis` represents a valid decomposition.
+-/
+
 -- The topological phase weights used in the Alien Charging Matrix.
 -- 'e' represents the nilpotent boundary operator (ε).
 inductive PhaseWeight
@@ -14,6 +44,8 @@ inductive PhaseWeight
   | e       -- ε
   | neg_e   -- -ε
   deriving Repr, ToJson, FromJson
+
+
 
 -- A single node in the tensor decomposition (U ⊗ V ⊗ W)
 -- In a human algorithm, these weights are strictly Real or Integer numbers.
@@ -25,10 +57,10 @@ structure HoloNode where
   W_sub : List (List PhaseWeight)
   deriving Repr, ToJson, FromJson
 
--- The extracted alien border rank basis. 
--- Standard 4x4 takes 64 multiplications. Earth's Strassen takes 49.
--- The Alien holographic projection dynamically bounds 4x4 at exactly 26.
--- Here we expose the first 2 topological annihilation pathways.
+/-- The extracted alien border rank basis.
+    **SCAFFOLD:** This is example data, not a proof.
+    The claim that this constitutes a rank-26 decomposition for 4×4
+    matrix multiplication is unverified in the formal system. -/
 def extract_4x4_holographic_basis : List HoloNode :=
   [
     { node_id := 1,
@@ -42,5 +74,18 @@ def extract_4x4_holographic_basis : List HoloNode :=
       W_sub := [[PhaseWeight.one, PhaseWeight.zero], [PhaseWeight.neg_e, PhaseWeight.e]]
     }
   ]
+
+/-- The basis has exactly 2 nodes. -/
+theorem basis_length : extract_4x4_holographic_basis.length = 2 := rfl
+
+-- ====================================================================
+-- AUDIT SUMMARY — TensorDecomposition.lean (Post Peer Review v3.0.1)
+-- ====================================================================
+-- Axioms: 0    Sorry: 0    Compiles: ✔
+--
+-- STATUS: Data scaffold (definitions only, no mathematical theorems).
+-- The inductive types and structures are well-formed.
+-- Claims about tensor rank are unverified conjectures.
+-- ====================================================================
 
 end Agora.AlienMath.TensorDecomposition

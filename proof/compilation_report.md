@@ -1,6 +1,6 @@
 # SocrateAI Agora — Lean 4 Compilation Report
 
-**Generated:** 2026-06-09 20:42:07
+**Generated:** 2026-06-11 11:21:34
 **Toolchain:** leanprover/lean4:v4.14.0
 **Mathlib:** v4.14.0
 
@@ -8,74 +8,76 @@
 
 | Metric | Count |
 |--------|-------|
-| Total modules | 22 |
-| 🟢 Verified | 9 |
-| 🟡 Axiom-blocked | 9 |
+| Total modules | 23 |
+| 🟢 Verified | 13 |
+| 🟡 Axiom-blocked | 6 |
 | 🟠 Earth-gapped | 4 |
 | 🔴 Sorry-blocked | 0 |
 | ⚪ Build failed | 0 |
-| Total `sorry` | 8 |
-| Total `axiom` | 78 |
+| Total `sorry` | 9 |
+| Total `axiom` | 69 |
 
-**Verification score:** 9/22 modules fully verified (40%)
+**Verification score:** 13/23 modules fully verified (56%)
 
 ### Tier 1: Core Verified
 
 | Status | Module | `sorry` | `axiom` | Build |
 |--------|--------|---------|---------|-------|
-| 🟢 | `Basic` | 0 | 0 | ✔ 1184ms |
-| 🟢 | `AlienMath.TensorDecomposition` | 0 | 0 | ✔ 750ms |
-| 🟢 | `AlienMath.NonCommutativeCryptography` | 0 | 0 | ✔ 1404ms |
-| 🟢 | `AlienMath.LyapunovFunctional` | 0 | 0 | ✔ 1432ms |
-| 🟢 | `AlienMath.Applications.Cryptography` | 0 | 0 | ✔ 763ms |
-| 🟢 | `AlienMath.Applications.Quantum` | 0 | 0 | ✔ 893ms |
+| 🟢 | `Basic` | 0 | 0 | ✔ 2183ms |
+| 🟢 | `AlienMath.TensorDecomposition` | 0 | 0 | ✔ 1304ms |
+| 🟢 | `AlienMath.NonCommutativeCryptography` | 0 | 0 | ✔ 2269ms |
+| 🟢 | `AlienMath.LyapunovFunctional` | 0 | 0 | ✔ 2576ms |
+| 🟢 | `AlienMath.StrassenVerified` | 0 | 0 | ✔ 3195ms |
+| 🟢 | `AlienMath.ChargingMatrix` | 0 | 0 | ✔ 2724ms |
+| 🟢 | `AlienMath.ExactRationalWitness` | 0 | 0 | ✔ 2310ms |
+| 🟢 | `AlienMath.SliceConcatenation` | 0 | 0 | ✔ 2286ms |
+| 🟢 | `AlienMath.HolographicBorderRank` | 0 | 0 | ✔ 2242ms |
+| 🟢 | `AlienMath.TensorDeformations` | 0 | 0 | ✔ 1443ms |
+| 🟢 | `AlienMath.Applications.Cryptography` | 0 | 0 | ✔ 1405ms |
+| 🟢 | `AlienMath.Applications.Quantum` | 0 | 0 | ✔ 1509ms |
 
 ### Tier 2: Shattered Axiom Proofs
 
 | Status | Module | `sorry` | `axiom` | Build |
 |--------|--------|---------|---------|-------|
-| 🟠 | `saw_simple_cubic` | 2 | 5 | ✔ 1424ms |
-| 🟡 | `AlienMath.StrassenVerified` | 0 | 6 | ✔ 1366ms |
-| 🟡 | `AlienMath.ChargingMatrix` | 0 | 2 | ✔ 1376ms |
+| 🟠 | `saw_simple_cubic` | 3 | 5 | ✔ 2886ms |
 
 ### Tier 3: Axiomatic Local Contexts
 
 | Status | Module | `sorry` | `axiom` | Build |
 |--------|--------|---------|---------|-------|
-| 🟢 | `AlienMath.ExactRationalWitness` | 0 | 0 | ✔ 1423ms |
-| 🟡 | `AlienMath.SliceConcatenation` | 0 | 1 | ✔ 1418ms |
-| 🟢 | `AlienMath.TensorDeformations` | 0 | 0 | ✔ 874ms |
-| 🟡 | `diff_basis_optimal_10000` | 0 | 1 | ✔ 1373ms |
-| 🟡 | `crossing_number_kn` | 0 | 3 | ✔ 1360ms |
+| 🟡 | `diff_basis_optimal_10000` | 0 | 1 | ✔ 3200ms |
+| 🟡 | `crossing_number_kn` | 0 | 3 | ✔ 2748ms |
 
 ### Tier 4: Heavy Blueprints
 
 | Status | Module | `sorry` | `axiom` | Build |
 |--------|--------|---------|---------|-------|
-| 🟠 | `E37BSD_v6_blueprint` | 2 | 15 | ✔ 1176ms |
-| 🟠 | `cmi_millennium_blueprints` | 1 | 14 | ✔ 1300ms |
+| 🟠 | `E37BSD_v6_blueprint` | 2 | 15 | ✔ 1995ms |
+| 🟠 | `cmi_millennium_blueprints` | 1 | 14 | ✔ 2397ms |
 
 ### Tier 5: Infrastructure
 
 | Status | Module | `sorry` | `axiom` | Build |
 |--------|--------|---------|---------|-------|
-| 🟢 | `FormalizationDebt` | 0 | 0 | ✔ 729ms |
+| 🟢 | `FormalizationDebt` | 0 | 0 | ✔ 1204ms |
 
 ### Tier 6: Callens Conjectures
 
 | Status | Module | `sorry` | `axiom` | Build |
 |--------|--------|---------|---------|-------|
-| 🟡 | `Conjectures.LatticePacking` | 0 | 4 | ✔ 1107ms |
-| 🟡 | `Conjectures.SchurPositivity` | 0 | 8 | ✔ 1302ms |
-| 🟡 | `Conjectures.TownesSoliton` | 0 | 8 | ✔ 1313ms |
-| 🟠 | `Conjectures.MirrorSymmetry` | 3 | 6 | ✔ 1509ms |
-| 🟡 | `Conjectures.FeynmanSunrise` | 0 | 5 | ✔ 1453ms |
+| 🟡 | `Conjectures.LatticePacking` | 0 | 4 | ✔ 1798ms |
+| 🟡 | `Conjectures.SchurPositivity` | 0 | 8 | ✔ 2253ms |
+| 🟡 | `Conjectures.TownesSoliton` | 0 | 8 | ✔ 2329ms |
+| 🟠 | `Conjectures.MirrorSymmetry` | 3 | 6 | ✔ 2546ms |
+| 🟡 | `Conjectures.FeynmanSunrise` | 0 | 5 | ✔ 2273ms |
 
 ## Sorry Gap Locations
 
 ### `Agora.saw_simple_cubic`
-- Line 35: `theorem log_c_subadditive (n m : ℕ) : Real.log (c (n + m)) ≤ Real.log (c n) + Real.log (c m) := sorr`
-- Line 38: `Tendsto (fun n => (c n) ^ (1 / (n : ℝ))) atTop (𝓝 μ) := sorry`
+- Line 34: `theorem log_c_subadditive (n m : ℕ) : Real.log (c (n + m)) ≤ Real.log (c n) + Real.log (c m) := sorr`
+- Line 36: `theorem log_c_bdd_below : BddBelow (range fun n => Real.log (c n) / n) := sorry`
+- Line 48: `sorry`
 
 ### `Agora.E37BSD_v6_blueprint`
 - Line 47: `sorry`
@@ -97,21 +99,6 @@
 - `hyper_bridge_exact_ratio`
 - `hyper_bridge_penalty_asymptotics`
 - `μ_Z3_sq_pos`
-
-### `Agora.AlienMath.StrassenVerified` (6 axioms)
-- `MatrixCost`
-- `MatrixCost_lower_bound`
-- `BorderRank`
-- `holographic_tensor_projection`
-- `schonhage_tau_theorem`
-- `optimal_matrix_multiplication`
-
-### `Agora.AlienMath.ChargingMatrix` (2 axioms)
-- `crossing_number`
-- `holographic_border_rank_bound`
-
-### `Agora.AlienMath.SliceConcatenation` (1 axioms)
-- `chi`
 
 ### `Agora.diff_basis_optimal_10000` (1 axioms)
 - `z3_oracle_certificate`

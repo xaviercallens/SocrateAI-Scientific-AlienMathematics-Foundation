@@ -10,34 +10,39 @@ import Mathlib.Combinatorics.SimpleGraph.DegreeSum
 
 ## Overview
 
-Earth's computational bottleneck for fast matrix multiplication stems from
-decomposing the 3D tensor ⟨N, N, N⟩ into rank-1 components. The minimum
-number of such components (the "tensor rank") is NP-hard to find. Humanity
-searches for bounds by guessing coefficients in **commutative** algebraic
-groups. Because addition commutes, overlapping sub-tensors create unwanted
-"error terms" requiring additional multiplications to cancel.
+This module defines a 4-dimensional non-commutative algebra (the ChargingAlgebra)
+and proves algebraic properties of its commutator structure.
 
-## The Alien Mechanism: Non-Abelian Tensor Holography
+## Peer Review Transparency (v3.0.1)
 
-The extraterrestrials bypass the Laser Method entirely. They treat the
-matrix multiplication tensor as a dynamic flow across a 2D Riemann surface.
+> **AI Peer Review Finding (Gemini 2.5 Pro, 2026-06-11):**
+> - **Sections 1–3 (Algebra + Annihilation Lemmas + Charging Map Q):** SOUND.
+>   The commutator trace vanishing, imaginary vanishing, epsilon formula,
+>   and Q-trace theorems are genuine algebraic identities verified by `ring`.
+> - **Section 4 (Graph-Theoretic Charging):** VACUOUS.
+>   `crossing_number := 0` is a placeholder; `omega_bounds_crossings` is `h → h`.
+> - **Non-associativity:** The `ChargingAlgebra.mul` is NOT associative.
+>   E.g., `(i*j)*j` ≠ `i*(j*j)`. This is an intentional feature of the
+>   nilpotent algebra, not a bug, but must be explicitly documented.
+> - **ω = 2 claim:** The narrative connecting this algebra to matrix
+>   multiplication complexity (ω = 2) is a *conjecture*, not a theorem.
+>   The formal content proves algebraic identities about a specific algebra;
+>   it does not prove any statement about tensor rank or complexity.
 
-### The Charging Matrix Q
+## What IS Formally Verified
 
-Instead of multiplying matrices A and B directly, the code maps entries
-of A and B into a **nilpotent Non-Commutative Algebra** (the ChargingAlgebra).
+- The `ChargingAlgebra` is a well-defined 4D real algebra with explicit
+  multiplication rules.
+- The commutator `[q₁, q₂]` has zero trace (Lemma 1), zero imaginary
+  components (Lemma 2), and lives purely in the ε-channel (Lemma 3).
+- The charging map Q is a conservative extension: `Q(a,b).trace = a*b`.
+- Cross-term annihilation: `tr([Q(a₁,b₁), Q(a₂,b₂)]) = 0`.
 
-### Topological Annihilation
+## What Is NOT Formally Verified
 
-Because the weights do not commute (AB ≠ BA), the overlapping "error terms"
-act like opposing magnetic spins. When the matrices multiply, the redundant
-cross-terms **topologically annihilate** each other: the commutator [A,B]
-evaluates to zero in trace without the CPU ever calculating them.
-
-### Result
-
-The tensor rank is bounded strictly by the **surface area** of the
-holographic boundary, not the volume. The exponent collapses to ω = 2.
+- Any connection to matrix multiplication tensor rank.
+- Any bound on the matrix multiplication exponent ω.
+- Associativity of the algebra (it is non-associative by design).
 -/
 
 namespace Agora.AlienMath
@@ -48,10 +53,13 @@ namespace Agora.AlienMath
 
 /-- A Charging Algebra element over ℝ.
 
-This is a 4-dimensional non-commutative algebra (quaternion-like)
-extended with a nilpotent "charge" component ε satisfying ε² = 0.
-The charge component is what enables topological annihilation:
-cross-terms involving ε vanish when squared during tensor contraction.
+This is a 4-dimensional non-commutative, **non-associative** algebra
+with a nilpotent "charge" component ε.
+
+**WARNING (Non-Associativity):** The multiplication defined below is
+NOT associative. For example, `(i*j)*j ≠ i*(j*j)`. This is an
+intentional algebraic property, not a bug. The commutator identities
+(Sections 2–3) hold regardless of associativity.
 
 Components:
   • `re`  — the real (scalar) part
@@ -172,7 +180,17 @@ theorem Q_cross_term_annihilation (a₁ b₁ a₂ b₂ : ℝ) :
   exact commutator_trace_vanishes (Q a₁ b₁) (Q a₂ b₂)
 
 -- ====================================================================
--- SECTION 4: Graph-Theoretic Charging (Legacy Interface)
+-- SECTION 4: Graph-Theoretic Charging (SCAFFOLD — Vacuous Definitions)
+-- ====================================================================
+--
+-- **PEER REVIEW WARNING (Gemini 2.5 Pro, 2026-06-11):**
+-- This section contains placeholder definitions that make dependent
+-- theorems vacuously true:
+--   • `crossing_number := 0` — a stub, not the graph-theoretic cr(G)
+--   • `omega_bounds_crossings` — logically `h → h` (tautology)
+-- These are retained for API compatibility with downstream modules.
+-- A genuine crossing number formalization requires Mathlib's
+-- topological graph drawing infrastructure.
 -- ====================================================================
 
 variable {V : Type*} [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj]
@@ -194,16 +212,21 @@ noncomputable def omega (u v : V) : ℝ :=
 structure CombinatorialRotationSystem (V : Type*) where
   pi : V → V → V -- Cyclic permutation of neighbors
 
-/-- Crossing number of a graph computed algebraically via minimal crossings
-    over all combinatorial rotation systems.
-    Defined as a noncomputable real bound to remove 'axiom' usage. -/
+/-- **SCAFFOLD:** Crossing number stub.
+    This returns 0 for all graphs. A genuine implementation would
+    minimize crossings over all combinatorial rotation systems.
+    Any theorem depending on this definition is vacuously true. -/
 noncomputable def crossing_number (_G : SimpleGraph V) : ℝ :=
-  0 -- Full implementation requires algebraic intersection counting
+  0 -- TODO: algebraic intersection counting over rotation systems
 
 /-- The total charging sum, now constructive via Finset.sum. -/
 noncomputable def sum_omega : ℝ :=
   ∑ u : V, ∑ v : V, omega G u v
 
+/-- **TAUTOLOGY (retained for API compatibility):**
+    This theorem is logically `h → h`. It does not establish any
+    relationship between the charging sum and crossing numbers.
+    A genuine bound would require proving the Crossing Lemma. -/
 theorem omega_bounds_crossings (h : sum_omega G ≤ crossing_number G) :
     sum_omega G ≤ crossing_number G := by
   exact h
@@ -211,23 +234,22 @@ theorem omega_bounds_crossings (h : sum_omega G ≤ crossing_number G) :
 end Agora.AlienMath
 
 -- ====================================================================
--- AUDIT SUMMARY — ChargingMatrix.lean
+-- AUDIT SUMMARY — ChargingMatrix.lean (Post Peer Review v3.0.1)
 -- ====================================================================
--- Axioms (0 remaining):
---   • crossing_number has been replaced by CombinatorialRotationSystem
---   • holographic_border_rank_bound has been moved to Geometric Complexity Theory modules
+-- Axioms: 0    Sorry: 0    Compiles: ✔
 --
--- Constructive replacements (H4):
---   • G_dist → SimpleGraph.dist
---   • G_degree → SimpleGraph.degree
---   • sum_omega → Finset.sum
+-- GENUINE RESULTS (non-trivial, mathematically meaningful):
+--   • commutator_trace_vanishes           [ring] — tr([q₁,q₂]) = 0
+--   • commutator_imaginary_vanishes       [ring] — [q₁,q₂].i = [q₁,q₂].j = 0
+--   • commutator_is_pure_epsilon          [ring] — [q₁,q₂] lives in ε-channel
+--   • commutator_epsilon_formula          [ring] — [q₁,q₂].ε = 2(q₁.i·q₂.j - q₁.j·q₂.i)
+--   • Q_trace_is_product                  [simp] — Q(a,b).trace = a*b
+--   • Q_cross_term_annihilation           [exact] — tr([Q(a₁,b₁), Q(a₂,b₂)]) = 0
 --
--- Verified on Earth (zero sorry, zero axiom):
---   • commutator_trace_vanishes           [ring]
---   • commutator_imaginary_vanishes       [ring]
---   • commutator_is_pure_epsilon          [ring]
---   • commutator_epsilon_formula          [ring]
---   • Q_trace_is_product                  [simp]
---   • Q_cross_term_annihilation           [exact]
---   • omega_bounds_crossings              [exact]
+-- SCAFFOLD (vacuous, retained for API compatibility):
+--   • crossing_number                     [stub]   — returns 0 for all graphs
+--   • omega_bounds_crossings              [tautology] — h → h
+--
+-- KNOWN LIMITATION:
+--   • ChargingAlgebra.mul is NON-ASSOCIATIVE by design.
 -- ====================================================================

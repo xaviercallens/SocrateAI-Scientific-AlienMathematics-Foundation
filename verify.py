@@ -100,7 +100,7 @@ def build_module(module: str) -> tuple[bool, str, str]:
     """Build a single Lean module via lake. Returns (success, stdout, stderr)."""
     try:
         result = subprocess.run(
-            ["lake", "build", module],
+            [os.path.expanduser("~/.elan/bin/lake"), "build", module],
             capture_output=True, text=True, timeout=600,
             cwd=str(LEAN4_ROOT)
         )

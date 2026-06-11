@@ -2,10 +2,34 @@ import Mathlib.Tactic
 import Mathlib.Data.Real.Basic
 
 /-!
-# Non-Commutative Cryptography
+# Non-Commutative Algebra — Quaternion Non-Commutativity
+
 This module defines a quaternion-like non-commutative algebra over the Reals,
-and formally verifies that multiplication is non-commutative using an explicit counterexample.
-This avoids any reliance on `sorry` and serves as a verified primitive for asymmetric cryptographic protocols.
+and formally verifies that multiplication is non-commutative using an explicit
+counterexample (the quaternion basis vectors i and j).
+
+## Peer Review Transparency (v3.0.1)
+
+> **AI Peer Review Finding (Gemini 2.5 Pro, 2026-06-11):**
+> - The proof of `quat_mul_non_commutative` is GENUINE and mathematically
+>   meaningful: it constructs a concrete counterexample (i, j) and derives
+>   a contradiction (1 = -1) from the assumption of commutativity.
+> - The module title "Non-Commutative Cryptography" is an OVERSTATEMENT.
+>   Proving `i*j ≠ j*i` is a basic algebraic fact, not a cryptographic
+>   primitive. No hardness assumptions, key exchange protocols, or
+>   security properties are defined or proven.
+
+## What IS Formally Verified
+
+- Hamilton's quaternion multiplication is correctly defined.
+- Quaternion multiplication is non-commutative (∃ q₁ q₂, q₁*q₂ ≠ q₂*q₁).
+- The proof uses a constructive counterexample with `norm_num`.
+
+## What Is NOT Formally Verified
+
+- Any cryptographic security property.
+- Hardness of the conjugacy search problem.
+- Key exchange correctness or security.
 -/
 
 /-- A Non-Commutative Ring element (e.g., Quaternion) over the Reals -/

@@ -1,16 +1,16 @@
 {
-  "generated": "2026-06-09T20:42:07.501951",
+  "generated": "2026-06-11T11:21:34.171072",
   "toolchain": "leanprover/lean4:v4.14.0",
   "mathlib": "v4.14.0",
   "summary": {
-    "total": 22,
-    "verified": 9,
-    "axiom_blocked": 9,
+    "total": 23,
+    "verified": 13,
+    "axiom_blocked": 6,
     "earth_gapped": 4,
     "sorry_blocked": 0,
     "build_failed": 0,
-    "total_sorry": 8,
-    "total_axiom": 78
+    "total_sorry": 9,
+    "total_axiom": 69
   },
   "modules": [
     {
@@ -22,7 +22,7 @@
       "axiom_count": 0,
       "axiom_names": [],
       "sorry_locations": [],
-      "build_time_ms": 1184,
+      "build_time_ms": 2183,
       "error_messages": []
     },
     {
@@ -34,7 +34,7 @@
       "axiom_count": 0,
       "axiom_names": [],
       "sorry_locations": [],
-      "build_time_ms": 750,
+      "build_time_ms": 1304,
       "error_messages": []
     },
     {
@@ -46,7 +46,7 @@
       "axiom_count": 0,
       "axiom_names": [],
       "sorry_locations": [],
-      "build_time_ms": 1404,
+      "build_time_ms": 2269,
       "error_messages": []
     },
     {
@@ -58,7 +58,79 @@
       "axiom_count": 0,
       "axiom_names": [],
       "sorry_locations": [],
-      "build_time_ms": 1432,
+      "build_time_ms": 2576,
+      "error_messages": []
+    },
+    {
+      "module": "Agora.AlienMath.StrassenVerified",
+      "tier": "tier1_verified",
+      "status": "verified",
+      "build_ok": true,
+      "sorry_count": 0,
+      "axiom_count": 0,
+      "axiom_names": [],
+      "sorry_locations": [],
+      "build_time_ms": 3195,
+      "error_messages": []
+    },
+    {
+      "module": "Agora.AlienMath.ChargingMatrix",
+      "tier": "tier1_verified",
+      "status": "verified",
+      "build_ok": true,
+      "sorry_count": 0,
+      "axiom_count": 0,
+      "axiom_names": [],
+      "sorry_locations": [],
+      "build_time_ms": 2724,
+      "error_messages": []
+    },
+    {
+      "module": "Agora.AlienMath.ExactRationalWitness",
+      "tier": "tier1_verified",
+      "status": "verified",
+      "build_ok": true,
+      "sorry_count": 0,
+      "axiom_count": 0,
+      "axiom_names": [],
+      "sorry_locations": [],
+      "build_time_ms": 2310,
+      "error_messages": []
+    },
+    {
+      "module": "Agora.AlienMath.SliceConcatenation",
+      "tier": "tier1_verified",
+      "status": "verified",
+      "build_ok": true,
+      "sorry_count": 0,
+      "axiom_count": 0,
+      "axiom_names": [],
+      "sorry_locations": [],
+      "build_time_ms": 2286,
+      "error_messages": []
+    },
+    {
+      "module": "Agora.AlienMath.HolographicBorderRank",
+      "tier": "tier1_verified",
+      "status": "verified",
+      "build_ok": true,
+      "sorry_count": 0,
+      "axiom_count": 0,
+      "axiom_names": [],
+      "sorry_locations": [],
+      "build_time_ms": 2242,
+      "error_messages": []
+    },
+    {
+      "module": "Agora.AlienMath.TensorDeformations",
+      "tier": "tier1_verified",
+      "status": "verified",
+      "build_ok": true,
+      "sorry_count": 0,
+      "axiom_count": 0,
+      "axiom_names": [],
+      "sorry_locations": [],
+      "build_time_ms": 1443,
       "error_messages": []
     },
     {
@@ -70,7 +142,7 @@
       "axiom_count": 0,
       "axiom_names": [],
       "sorry_locations": [],
-      "build_time_ms": 763,
+      "build_time_ms": 1405,
       "error_messages": []
     },
     {
@@ -82,7 +154,7 @@
       "axiom_count": 0,
       "axiom_names": [],
       "sorry_locations": [],
-      "build_time_ms": 893,
+      "build_time_ms": 1509,
       "error_messages": []
     },
     {
@@ -90,7 +162,7 @@
       "tier": "tier2_shattered",
       "status": "earth_gapped",
       "build_ok": true,
-      "sorry_count": 2,
+      "sorry_count": 3,
       "axiom_count": 5,
       "axiom_names": [
         "alien_hyper_bridge_lace_converges",
@@ -101,87 +173,19 @@
       ],
       "sorry_locations": [
         {
-          "line": 35,
+          "line": 34,
           "content": "theorem log_c_subadditive (n m : \u2115) : Real.log (c (n + m)) \u2264 Real.log (c n) + Real.log (c m) := sorry"
         },
         {
-          "line": 38,
-          "content": "Tendsto (fun n => (c n) ^ (1 / (n : \u211d))) atTop (\ud835\udcdd \u03bc) := sorry"
+          "line": 36,
+          "content": "theorem log_c_bdd_below : BddBelow (range fun n => Real.log (c n) / n) := sorry"
+        },
+        {
+          "line": 48,
+          "content": "sorry"
         }
       ],
-      "build_time_ms": 1424,
-      "error_messages": []
-    },
-    {
-      "module": "Agora.AlienMath.StrassenVerified",
-      "tier": "tier2_shattered",
-      "status": "axiom_blocked",
-      "build_ok": true,
-      "sorry_count": 0,
-      "axiom_count": 6,
-      "axiom_names": [
-        "MatrixCost",
-        "MatrixCost_lower_bound",
-        "BorderRank",
-        "holographic_tensor_projection",
-        "schonhage_tau_theorem",
-        "optimal_matrix_multiplication"
-      ],
-      "sorry_locations": [],
-      "build_time_ms": 1366,
-      "error_messages": []
-    },
-    {
-      "module": "Agora.AlienMath.ChargingMatrix",
-      "tier": "tier2_shattered",
-      "status": "axiom_blocked",
-      "build_ok": true,
-      "sorry_count": 0,
-      "axiom_count": 2,
-      "axiom_names": [
-        "crossing_number",
-        "holographic_border_rank_bound"
-      ],
-      "sorry_locations": [],
-      "build_time_ms": 1376,
-      "error_messages": []
-    },
-    {
-      "module": "Agora.AlienMath.ExactRationalWitness",
-      "tier": "tier3_axiomatic",
-      "status": "verified",
-      "build_ok": true,
-      "sorry_count": 0,
-      "axiom_count": 0,
-      "axiom_names": [],
-      "sorry_locations": [],
-      "build_time_ms": 1423,
-      "error_messages": []
-    },
-    {
-      "module": "Agora.AlienMath.SliceConcatenation",
-      "tier": "tier3_axiomatic",
-      "status": "axiom_blocked",
-      "build_ok": true,
-      "sorry_count": 0,
-      "axiom_count": 1,
-      "axiom_names": [
-        "chi"
-      ],
-      "sorry_locations": [],
-      "build_time_ms": 1418,
-      "error_messages": []
-    },
-    {
-      "module": "Agora.AlienMath.TensorDeformations",
-      "tier": "tier3_axiomatic",
-      "status": "verified",
-      "build_ok": true,
-      "sorry_count": 0,
-      "axiom_count": 0,
-      "axiom_names": [],
-      "sorry_locations": [],
-      "build_time_ms": 874,
+      "build_time_ms": 2886,
       "error_messages": []
     },
     {
@@ -195,7 +199,7 @@
         "z3_oracle_certificate"
       ],
       "sorry_locations": [],
-      "build_time_ms": 1373,
+      "build_time_ms": 3200,
       "error_messages": []
     },
     {
@@ -211,7 +215,7 @@
         "crossing_number_kn_conjecture"
       ],
       "sorry_locations": [],
-      "build_time_ms": 1360,
+      "build_time_ms": 2748,
       "error_messages": []
     },
     {
@@ -248,7 +252,7 @@
           "content": "theorem E37_tors_trivial : Subsingleton (torsionSubgroup E37) := sorry"
         }
       ],
-      "build_time_ms": 1176,
+      "build_time_ms": 1995,
       "error_messages": []
     },
     {
@@ -280,7 +284,7 @@
           "content": "def fluid_velocity_3d (u : \u211d \u2192 V \u2192 V) : Prop := sorry"
         }
       ],
-      "build_time_ms": 1300,
+      "build_time_ms": 2397,
       "error_messages": []
     },
     {
@@ -292,7 +296,7 @@
       "axiom_count": 0,
       "axiom_names": [],
       "sorry_locations": [],
-      "build_time_ms": 729,
+      "build_time_ms": 1204,
       "error_messages": []
     },
     {
@@ -309,7 +313,7 @@
         "callens_lattice_packing_duality_conjecture"
       ],
       "sorry_locations": [],
-      "build_time_ms": 1107,
+      "build_time_ms": 1798,
       "error_messages": []
     },
     {
@@ -330,7 +334,7 @@
         "schur_positivity_threshold_conjecture"
       ],
       "sorry_locations": [],
-      "build_time_ms": 1302,
+      "build_time_ms": 2253,
       "error_messages": []
     },
     {
@@ -351,7 +355,7 @@
         "callens_townes_soliton_stability_conjecture"
       ],
       "sorry_locations": [],
-      "build_time_ms": 1313,
+      "build_time_ms": 2329,
       "error_messages": []
     },
     {
@@ -383,7 +387,7 @@
           "content": "noncomputable instance Coh_has_derived (X : CalabiYauThreefold) : HasDerivedCategory.{0} (Coh X) := sorry"
         }
       ],
-      "build_time_ms": 1509,
+      "build_time_ms": 2546,
       "error_messages": []
     },
     {
@@ -401,7 +405,7 @@
         "callens_feynman_sunrise_integral_conjecture"
       ],
       "sorry_locations": [],
-      "build_time_ms": 1453,
+      "build_time_ms": 2273,
       "error_messages": []
     }
   ]
