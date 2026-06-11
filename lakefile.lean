@@ -37,6 +37,7 @@ lean_lib Agora where
     `Agora.AlienMath.ExactRationalWitness,
     `Agora.AlienMath.ChargingMatrix,
     `Agora.AlienMath.SliceConcatenation,
+    `Agora.AlienMath.HolographicBorderRank,
     `Agora.AlienMath.TensorDeformations,
     -- Applications
     `Agora.AlienMath.Applications.Cryptography,

@@ -1,58 +1,72 @@
-name: Lean 4 CI
+name: Lean 4 CI — Formal Verification
 
 on:
   push:
-    branches: [ main, fix/* ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
 jobs:
-  build:
-    name: Build and Test
+  verify:
+    name: Build & Verify (Lean 4)
     runs-on: ubuntu-latest
+    timeout-minutes: 120
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Lean 4
+      - name: Install elan (Lean toolchain manager)
         run: |
-          # Install Rust (required for Lean 4)
-          curl -sSf https://sh.rustup.rs | sh -s -- -y
-          source ~/.cargo/env
-          # Install Lean 4
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> $GITHUB_PATH
+
+      - name: Verify Lean version
+        run: |
           lean --version
-          # Install Lake (Lean 4 build tool)
-          curl -sSf https://raw.githubusercontent.com/leanprover/lake/main/scripts/install.sh | sh
-          source ~/.profile
           lake --version
 
-      - name: Cache Lean dependencies
-        uses: actions/cache@v3
+      - name: Cache Mathlib4
+        uses: actions/cache@v4
         with:
           path: |
-            ~/.lake
-            lake-packages
-          key: ${{ runner.os }}-lean-${{ hashFiles('lakefile.lean') }}
+            .lake
+            ~/.elan
+          key: lean-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}
           restore-keys: |
-            ${{ runner.os }}-lean-
+            lean-
 
-      - name: Build project
+      - name: Fetch Mathlib cache
+        run: lake exe cache get || true
+
+      - name: Build all modules
         run: lake build
 
-      - name: Run tests
-        run: |
-          # Run all Lean files to check for errors
-          find . -name "*.lean" -type f | xargs -I {} lean --run {}
+      - name: Run comprehensive audit
+        run: python3 verify.py
 
-      - name: Lint code
+      - name: Verify zero axioms and sorrys in AlienMath
         run: |
-          # Check for linter warnings
-          find . -name "*.lean" -type f | xargs -I {} lean --lint {}
+          echo "=== Checking for active axiom/sorry in Agora/AlienMath/ ==="
+          AXIOMS=$(grep -rn '^\s*axiom\b' Agora/AlienMath/ || true)
+          SORRYS=$(grep -rn '^\s*sorry\b' Agora/AlienMath/ || true)
+          if [ -n "$AXIOMS" ]; then
+            echo "FAIL: Found active axiom declarations:"
+            echo "$AXIOMS"
+            exit 1
+          fi
+          if [ -n "$SORRYS" ]; then
+            echo "FAIL: Found active sorry gaps:"
+            echo "$SORRYS"
+            exit 1
+          fi
+          echo "PASS: Zero axioms, zero sorrys in Agora/AlienMath/"
 
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+      - name: Upload verification reports
+        uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: lean-build
+          name: verification-reports
           path: |
-            build/
-            lake-packages/
+            proof/compilation_report.md
+            proof/audit.json

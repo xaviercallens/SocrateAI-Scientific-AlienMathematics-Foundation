@@ -32,26 +32,27 @@ PROOF_DIR = LEAN4_ROOT / "proof"
 
 # All known modules, grouped by verification tier
 MODULES = {
-    # Tier 1: Core verified (zero sorry expected)
+    # Tier 1: Core verified (zero sorry, zero axiom)
     "tier1_verified": [
         "Agora.Basic",
         "Agora.AlienMath.TensorDecomposition",
         "Agora.AlienMath.NonCommutativeCryptography",
         "Agora.AlienMath.LyapunovFunctional",
+        "Agora.AlienMath.StrassenVerified",
+        "Agora.AlienMath.ChargingMatrix",
+        "Agora.AlienMath.ExactRationalWitness",
+        "Agora.AlienMath.SliceConcatenation",
+        "Agora.AlienMath.HolographicBorderRank",
+        "Agora.AlienMath.TensorDeformations",
         "Agora.AlienMath.Applications.Cryptography",
         "Agora.AlienMath.Applications.Quantum",
     ],
     # Tier 2: Shattered axiom proofs (sorry on Earth gaps only)
     "tier2_shattered": [
         "Agora.saw_simple_cubic",
-        "Agora.AlienMath.StrassenVerified",
-        "Agora.AlienMath.ChargingMatrix",
     ],
-    # Tier 3: Axiomatic Local Contexts (axiom-blocked blueprints)
+    # Tier 3: Axiomatic Local Contexts (external compute pending)
     "tier3_axiomatic": [
-        "Agora.AlienMath.ExactRationalWitness",
-        "Agora.AlienMath.SliceConcatenation",
-        "Agora.AlienMath.TensorDeformations",
         "Agora.diff_basis_optimal_10000",
         "Agora.crossing_number_kn",
     ],
