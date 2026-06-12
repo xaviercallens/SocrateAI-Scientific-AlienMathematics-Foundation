@@ -42,6 +42,10 @@ lean_lib Agora where
     `Agora.AlienMath.TensorDeformations,
     -- AlienAxiomLayer: master registry of all 6 alien axioms (V2+)
     `Agora.AlienMath.AlienAxiomLayer,
+    -- Strassen 4x4 numeric witness
+    `Agora.AlienMath.Strassen4x4Witness,
+    -- Mathlib PR draft (Earth math + EarthGap sketches, no alien axioms in scope)
+    `Agora.AlienMath.MathlibPR_Draft,
     -- Applications
     `Agora.AlienMath.Applications.Cryptography,
     `Agora.AlienMath.Applications.Quantum,
