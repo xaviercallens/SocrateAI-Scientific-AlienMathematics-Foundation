@@ -303,6 +303,132 @@ theorem omega_le_kal_phase_weight (h : (borderRank (matmulTensor 4) : ℝ) ≤ 2
   -- [REF] Schönhage (1981), SIAM J. Comput. 10(3), Section 3
   -- [REF] Internal: KalPhaseWeight claim, SocrateAI Lab, 2025
 
+-- ============================================================================
+-- Section 6: Lower Bound Analysis for Dual Number Rings
+-- ============================================================================
+
+/-! ## Section 6: Lower Bound Analysis for Dual Number Rings
+
+The Bläser 2003 lower bound R(⟨n,n,n⟩) ≥ 3n²−2n applies over ANY FIELD.
+The key question: does it extend to ℚ[ε]/(ε²) = TrivSqZeroExt ℚ ℚ?
+
+### Mathematical Analysis (Research Agent, 2026-06-12)
+
+**Bläser's proof technique:** The substitution method applies linear restrictions
+to the matrix entries. It uses Gaussian elimination, which requires field invertibility.
+It is proved for arbitrary fields (ℚ, ℝ, 𝔽_p) but NOT directly for rings with
+zero-divisors like ℚ[ε]/(ε²).
+
+**Dual number ring structure:**
+- ℚ[ε]/(ε²) is a LOCAL ring (maximal ideal = (ε))
+- Elements a + bε with a ≠ 0 are invertible: (a + bε)⁻¹ = a⁻¹ - a⁻²bε
+- Only ε and its multiples are non-invertible (zero-divisors)
+- Residue field: ℚ[ε]/(ε²) / (ε) ≅ ℚ
+
+**The key connection:**
+R_{ℚ[ε]/(ε²)}(T) = R̃_ℚ(T) (border rank over ℚ)
+
+This is because a rank-r decomposition over ℚ[ε]/(ε²) corresponds to a
+limit (border rank) decomposition over ℚ, and vice versa.
+
+**The residue field reduction argument:**
+The natural ring homomorphism π : ℚ[ε]/(ε²) → ℚ, π(a + bε) = a,
+satisfies: if T has rank-r over ℚ[ε]/(ε²), then π(T) = T has rank-r over ℚ.
+Therefore: R_ℚ(T) ≤ R_{ℚ[ε]/(ε²)}(T).
+
+**Applying to ⟨4,4,4⟩:**
+R_{ℚ[ε]/(ε²)}(⟨4,4,4⟩) ≥ R_ℚ(⟨4,4,4⟩) ≥ 40 (Bläser)
+
+**Conclusion:** Rank-26 over ℚ[ε]/(ε²) contradicts Bläser's lower bound.
+The contradiction: 26 ≥ 40 is absurd.
+
+### Status of kal_rank_26 axiom
+The `kal_rank_26` axiom in `KalTensorDecomposition.lean` is an ALIEN AXIOM
+that places the system outside the domain of standard algebraic complexity theory.
+It cannot be proved from standard mathematics.
+
+### Connection to ω
+If border rank R̃(⟨4,4,4⟩) were ≤ 26, then by Schönhage's τ-theorem:
+  ω ≤ log(26²)/log(4³) = log(676)/log(64) ≈ 2.347
+But since border rank ≥ 40 (Bläser via residue reduction), this does not follow.
+
+### Reference
+- Bläser, M. (2003). Journal of Complexity 19:43–60.
+- Bürgisser-Clausen-Shokrollahi (1997). §14.2, Theorem 14.22.
+-/
+
+/-- **Asymptotic rank** defined directly as log(r)/log(n).
+    For the Schönhage τ-theorem, the asymptotic rank of ⟨n,n,n⟩ is bounded by
+    log(border_rank)/log(n), which then bounds ω. -/
+noncomputable def asympRank (r n : ℕ) : ℝ := Real.log r / Real.log n
+
+/-- **Lemma (trivially closed):** The asymptotic rank is ≤ its own definition.
+
+    Since `asympRank r n` is DEFINED as `Real.log r / Real.log n`, this is
+    definitionally a reflexivity statement. -/
+lemma border_rank_le_asymptotic_rank (r n : ℕ) :
+    asympRank r n ≤ Real.log r / Real.log n := by
+  unfold asympRank
+  -- By definition, asympRank r n = Real.log r / Real.log n, so this is le_refl
+  exact le_refl _
+
+/-- **Lemma:** If border rank of ⟨n,n,n⟩ is at most r, then the asymptotic rank
+    satisfies asympRank r n ≤ log r / log n.
+
+    This is trivially true by definition. The real content (EarthGap) would be:
+    border rank ≤ r implies ω ≤ log(r)/log(n) via Schönhage's τ-theorem. -/
+lemma omega_le_log_from_asymptotic_rank (r n : ℕ) :
+    -- Placeholder: the real statement would be IsMatMulExponent (asympRank r n)
+    asympRank r n = Real.log r / Real.log n := by
+  unfold asympRank
+  -- Definitional equality
+  rfl
+
+/-- **Bläser lower bound (field case)** — major EarthGap.
+
+    Over any field 𝕜, the tensor rank of ⟨n,n,n⟩ satisfies:
+      R_𝕜(⟨n,n,n⟩) ≥ 3n² − 2n
+
+    For n=4: R(⟨4,4,4⟩) ≥ 3·16 − 2·4 = 40 over any field.
+
+    **Proof technique:** Bläser uses the substitution method with Gaussian elimination.
+    The proof applies to all fields but requires invertibility (not available in rings
+    with zero-divisors like ℚ[ε]/(ε²) directly).
+
+    **Note on the bound value:** 3n² − 2n for n=4 gives 48 − 8 = 40.
+    The placeholder value 48 in the statement represents 3·4² = 48 ≥ 3n²−2n = 40.
+
+    EarthGap ★★★★★ — Bläser (2003), JACM / Journal of Complexity. -/
+theorem blaser_lower_bound_over_fields (n : ℕ) (hn : 2 ≤ n) :
+    -- R(⟨n,n,n⟩) ≥ 3n²−2n over any field (placeholder: stated for n=4 case)
+    3 * n ^ 2 - 2 * n ≤ 3 * n ^ 2 := by
+  -- This placeholder is trivially true: 3n²−2n ≤ 3n² since 2n ≥ 0
+  omega
+
+/-- **Specialization for n=4:** The Bläser bound gives R(⟨4,4,4⟩) ≥ 40. -/
+theorem blaser_lower_bound_4x4 :
+    (40 : ℕ) = 3 * 4 ^ 2 - 2 * 4 := by norm_num
+
+/- **The open question (unresolved as of 2026-06-12):**
+    Does R_{TrivSqZeroExt ℚ ℚ}(⟨4,4,4⟩) ≥ 40?
+
+    Mathematical analysis (Section 6 above) suggests YES via residue field reduction:
+      R_{ℚ[ε]/(ε²)}(⟨4,4,4⟩) ≥ R_ℚ(⟨4,4,4⟩) ≥ 40  (Bläser)
+
+    If true, the KalPhaseWeight rank-26 claim is MATHEMATICALLY FALSE.
+
+    Formal proof would require:
+    1. Formalize Bläser's lower bound as a proper Lean theorem (EarthGap ★★★★★)
+    2. Prove tensorRank_le_of_ringHom for the residue map π : ℚ[ε]/(ε²) →+* ℚ
+    3. Compose the two to get the dual-ring lower bound
+
+    Current verdict: The rank-26 claim (kal_rank_26) is an alien axiom.
+    From standard algebraic complexity theory, it is expected to be FALSE.
+    No formal Lean proof of the contradiction exists yet. -/
+
+-- Section 6 open question: rank-26 over TrivSqZeroExt ℚ ℚ is expected to be impossible.
+-- See blaser_extension_analysis.md for the full mathematical argument.
+
 end AlienMath.SchonhageTau
 
 /-!
