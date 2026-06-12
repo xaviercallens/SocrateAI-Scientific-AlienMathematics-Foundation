@@ -31,6 +31,7 @@ lean_lib Agora where
     -- AlienMath core (sorry-free, fully verified)
     `Agora.AlienMath.KalTensorDecomposition,
     `Agora.AlienMath.StrassenVerified,
+    `Agora.AlienMath.Strassen4x4Witness,
     `Agora.AlienMath.NonCommutativeCryptography,
     `Agora.AlienMath.LyapunovFunctional,
     `Agora.AlienMath.KalChargingMatrix,
@@ -39,6 +40,8 @@ lean_lib Agora where
     `Agora.AlienMath.KalEntropy,
     `Agora.AlienMath.KalHolographicBorderRank,
     `Agora.AlienMath.TensorDeformations,
+    -- AlienAxiomLayer: master registry of all 6 alien axioms (V2+)
+    `Agora.AlienMath.AlienAxiomLayer,
     -- Applications
     `Agora.AlienMath.Applications.Cryptography,
     `Agora.AlienMath.Applications.Quantum,
