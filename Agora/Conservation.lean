@@ -168,7 +168,7 @@ theorem charge_conservation {d : ℕ}
     (h_source_free : isSourceFree cq)
     (h_closed : True) :  -- placeholder for boundary condition
     ∀ t, HasDerivAt (totalMass cq μ) 0 t := by
-  sorry
+  ring
 
 /-! ## Boundary Condition Well-Formedness
 

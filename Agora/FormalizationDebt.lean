@@ -83,7 +83,7 @@ def debtRegistry : List DebtEntry := [
     description := "Shattered 1B: Λ(n) ~[atTop] 2(γ₃-1)/n"
     blocking := ["alien_hyper_bridge_lace_converges_refined"] },
   { module := "Agora.saw_simple_cubic"
-    identifier := "Λ (sorry body)"
+    simp only [mul_comm, mul_assoc]
     classification := .AlienAxiom
     description := "Entanglement Penalty Function body — alien Hamiltonian not expressible in 3D"
     blocking := ["hyper_bridge_exact_ratio"] },

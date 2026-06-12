@@ -1,0 +1,201 @@
+/Users/xcallens/xdev/SocrateAI-Scientific-Agora/.venv/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+<frozen runpy>:128: RuntimeWarning: 'agents.hilbert.tools.sorry_completer' found in sys.modules after import of package 'agents.hilbert.tools', but prior to execution of 'agents.hilbert.tools.sorry_completer'; this may result in unpredictable behaviour
+2026-06-11 14:43:55 [info     ] scan_complete                  axioms=69 files=35 sorrys=20
+2026-06-11 14:43:55 [info     ] sweep_start                    max_difficulty=medium targets=5
+2026-06-11 14:43:55 [info     ] completing_sorry               difficulty=low file=Agora/Conservation.lean line=88 theorem=mass_conservation
+2026-06-11 14:43:55 [warning  ] leanbert_models_not_found      msg='Using tactic template fallback'
+2026-06-11 14:43:55 [warning  ] deepseek_7b_failed             attempt=0 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:43:55 [warning  ] deepseek_7b_failed             attempt=1 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:43:55 [warning  ] deepseek_7b_failed             attempt=2 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:43:55 [warning  ] deepseek_7b_failed             attempt=3 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:44:12 [warning  ] gemini_generation_failed       error="'parts'"
+2026-06-11 14:44:12 [info     ] hypotheses_generated           count=3 difficulty=low ratchet=0 theorem=mass_conservation
+2026-06-11 14:44:15 [info     ] ratchet_retry                  difficulty=low errors=3 iter=0 theorem=mass_conservation
+2026-06-11 14:44:15 [warning  ] leanbert_models_not_found      msg='Using tactic template fallback'
+2026-06-11 14:44:15 [warning  ] deepseek_7b_failed             attempt=0 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:44:15 [warning  ] deepseek_7b_failed             attempt=1 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:44:15 [warning  ] deepseek_7b_failed             attempt=2 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:44:15 [warning  ] deepseek_7b_failed             attempt=3 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:44:34 [warning  ] gemini_generation_failed       error="'parts'"
+2026-06-11 14:44:34 [info     ] hypotheses_generated           count=3 difficulty=low ratchet=1 theorem=mass_conservation
+2026-06-11 14:44:37 [info     ] ratchet_retry                  difficulty=low errors=3 iter=1 theorem=mass_conservation
+2026-06-11 14:44:37 [warning  ] leanbert_models_not_found      msg='Using tactic template fallback'
+2026-06-11 14:44:37 [warning  ] deepseek_7b_failed             attempt=0 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:44:37 [warning  ] deepseek_7b_failed             attempt=1 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:44:37 [warning  ] deepseek_7b_failed             attempt=2 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:44:37 [warning  ] deepseek_7b_failed             attempt=3 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:44:55 [warning  ] gemini_generation_failed       error="'parts'"
+2026-06-11 14:44:55 [info     ] hypotheses_generated           count=3 difficulty=low ratchet=2 theorem=mass_conservation
+2026-06-11 14:44:58 [info     ] ratchet_retry                  difficulty=low errors=3 iter=2 theorem=mass_conservation
+2026-06-11 14:44:58 [info     ] completing_sorry               difficulty=low file=Agora/Conservation.lean line=141 theorem=energy_conservation_isolated
+2026-06-11 14:44:58 [warning  ] leanbert_models_not_found      msg='Using tactic template fallback'
+2026-06-11 14:44:58 [warning  ] deepseek_7b_failed             attempt=0 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:44:58 [warning  ] deepseek_7b_failed             attempt=1 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:44:58 [warning  ] deepseek_7b_failed             attempt=2 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:44:58 [warning  ] deepseek_7b_failed             attempt=3 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:45:15 [warning  ] gemini_generation_failed       error="'parts'"
+2026-06-11 14:45:15 [info     ] hypotheses_generated           count=3 difficulty=low ratchet=0 theorem=energy_conservation_isolated
+2026-06-11 14:45:18 [info     ] ratchet_retry                  difficulty=low errors=3 iter=0 theorem=energy_conservation_isolated
+2026-06-11 14:45:18 [warning  ] leanbert_models_not_found      msg='Using tactic template fallback'
+2026-06-11 14:45:18 [warning  ] deepseek_7b_failed             attempt=0 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:45:18 [warning  ] deepseek_7b_failed             attempt=1 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:45:18 [warning  ] deepseek_7b_failed             attempt=2 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:45:18 [warning  ] deepseek_7b_failed             attempt=3 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:45:33 [warning  ] gemini_generation_failed       error="'parts'"
+2026-06-11 14:45:33 [info     ] hypotheses_generated           count=3 difficulty=low ratchet=1 theorem=energy_conservation_isolated
+2026-06-11 14:45:36 [info     ] ratchet_retry                  difficulty=low errors=3 iter=1 theorem=energy_conservation_isolated
+2026-06-11 14:45:36 [warning  ] leanbert_models_not_found      msg='Using tactic template fallback'
+2026-06-11 14:45:36 [warning  ] deepseek_7b_failed             attempt=0 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:45:36 [warning  ] deepseek_7b_failed             attempt=1 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:45:36 [warning  ] deepseek_7b_failed             attempt=2 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:45:37 [warning  ] deepseek_7b_failed             attempt=3 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:45:53 [warning  ] gemini_generation_failed       error="'parts'"
+2026-06-11 14:45:53 [info     ] hypotheses_generated           count=3 difficulty=low ratchet=2 theorem=energy_conservation_isolated
+2026-06-11 14:45:57 [info     ] ratchet_retry                  difficulty=low errors=3 iter=2 theorem=energy_conservation_isolated
+2026-06-11 14:45:57 [info     ] completing_sorry               difficulty=medium file=Agora/LoRA.lean line=157 theorem=lora_param_efficiency
+2026-06-11 14:45:57 [warning  ] leanbert_models_not_found      msg='Using tactic template fallback'
+2026-06-11 14:45:57 [warning  ] deepseek_7b_failed             attempt=0 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:45:57 [warning  ] deepseek_7b_failed             attempt=1 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:45:57 [warning  ] deepseek_7b_failed             attempt=2 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:45:57 [warning  ] deepseek_7b_failed             attempt=3 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:46:12 [warning  ] gemini_generation_failed       error="'parts'"
+2026-06-11 14:46:12 [info     ] hypotheses_generated           count=3 difficulty=medium ratchet=0 theorem=lora_param_efficiency
+2026-06-11 14:46:15 [info     ] ratchet_retry                  difficulty=medium errors=3 iter=0 theorem=lora_param_efficiency
+2026-06-11 14:46:15 [warning  ] leanbert_models_not_found      msg='Using tactic template fallback'
+2026-06-11 14:46:15 [warning  ] deepseek_7b_failed             attempt=0 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:46:15 [warning  ] deepseek_7b_failed             attempt=1 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:46:15 [warning  ] deepseek_7b_failed             attempt=2 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:46:15 [warning  ] deepseek_7b_failed             attempt=3 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:46:31 [warning  ] gemini_generation_failed       error="'parts'"
+2026-06-11 14:46:31 [info     ] hypotheses_generated           count=3 difficulty=medium ratchet=1 theorem=lora_param_efficiency
+2026-06-11 14:46:34 [info     ] ratchet_retry                  difficulty=medium errors=3 iter=1 theorem=lora_param_efficiency
+2026-06-11 14:46:34 [warning  ] leanbert_models_not_found      msg='Using tactic template fallback'
+2026-06-11 14:46:34 [warning  ] deepseek_7b_failed             attempt=0 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:46:34 [warning  ] deepseek_7b_failed             attempt=1 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:46:34 [warning  ] deepseek_7b_failed             attempt=2 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:46:34 [warning  ] deepseek_7b_failed             attempt=3 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:46:49 [warning  ] gemini_generation_failed       error="'parts'"
+2026-06-11 14:46:49 [info     ] hypotheses_generated           count=3 difficulty=medium ratchet=2 theorem=lora_param_efficiency
+2026-06-11 14:46:53 [info     ] ratchet_retry                  difficulty=medium errors=3 iter=2 theorem=lora_param_efficiency
+2026-06-11 14:46:53 [info     ] completing_sorry               difficulty=low file=Agora/RLCF.lean line=100 theorem=rlcf_monotone_descent
+2026-06-11 14:46:53 [warning  ] leanbert_models_not_found      msg='Using tactic template fallback'
+2026-06-11 14:46:53 [warning  ] deepseek_7b_failed             attempt=0 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:46:53 [warning  ] deepseek_7b_failed             attempt=1 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:46:53 [warning  ] deepseek_7b_failed             attempt=2 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:46:53 [warning  ] deepseek_7b_failed             attempt=3 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:47:10 [warning  ] gemini_generation_failed       error="'parts'"
+2026-06-11 14:47:10 [info     ] hypotheses_generated           count=3 difficulty=low ratchet=0 theorem=rlcf_monotone_descent
+2026-06-11 14:47:13 [info     ] ratchet_retry                  difficulty=low errors=3 iter=0 theorem=rlcf_monotone_descent
+2026-06-11 14:47:13 [warning  ] leanbert_models_not_found      msg='Using tactic template fallback'
+2026-06-11 14:47:13 [warning  ] deepseek_7b_failed             attempt=0 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:47:13 [warning  ] deepseek_7b_failed             attempt=1 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:47:13 [warning  ] deepseek_7b_failed             attempt=2 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:47:13 [warning  ] deepseek_7b_failed             attempt=3 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:47:30 [warning  ] gemini_generation_failed       error="'parts'"
+2026-06-11 14:47:30 [info     ] hypotheses_generated           count=3 difficulty=low ratchet=1 theorem=rlcf_monotone_descent
+2026-06-11 14:47:33 [info     ] ratchet_retry                  difficulty=low errors=3 iter=1 theorem=rlcf_monotone_descent
+2026-06-11 14:47:33 [warning  ] leanbert_models_not_found      msg='Using tactic template fallback'
+2026-06-11 14:47:33 [warning  ] deepseek_7b_failed             attempt=0 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:47:33 [warning  ] deepseek_7b_failed             attempt=1 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:47:33 [warning  ] deepseek_7b_failed             attempt=2 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:47:33 [warning  ] deepseek_7b_failed             attempt=3 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:47:49 [warning  ] gemini_generation_failed       error="'parts'"
+2026-06-11 14:47:49 [info     ] hypotheses_generated           count=3 difficulty=low ratchet=2 theorem=rlcf_monotone_descent
+2026-06-11 14:47:52 [info     ] ratchet_retry                  difficulty=low errors=3 iter=2 theorem=rlcf_monotone_descent
+2026-06-11 14:47:52 [info     ] completing_sorry               difficulty=low file=Agora/RLCF.lean line=146 theorem=rlcf_lyapunov_decrease
+2026-06-11 14:47:52 [warning  ] leanbert_models_not_found      msg='Using tactic template fallback'
+2026-06-11 14:47:52 [warning  ] deepseek_7b_failed             attempt=0 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:47:52 [warning  ] deepseek_7b_failed             attempt=1 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:47:52 [warning  ] deepseek_7b_failed             attempt=2 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:47:52 [warning  ] deepseek_7b_failed             attempt=3 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:48:08 [warning  ] gemini_generation_failed       error="'parts'"
+2026-06-11 14:48:08 [info     ] hypotheses_generated           count=3 difficulty=low ratchet=0 theorem=rlcf_lyapunov_decrease
+2026-06-11 14:48:11 [info     ] ratchet_retry                  difficulty=low errors=3 iter=0 theorem=rlcf_lyapunov_decrease
+2026-06-11 14:48:11 [warning  ] leanbert_models_not_found      msg='Using tactic template fallback'
+2026-06-11 14:48:11 [warning  ] deepseek_7b_failed             attempt=0 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:48:11 [warning  ] deepseek_7b_failed             attempt=1 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:48:11 [warning  ] deepseek_7b_failed             attempt=2 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:48:11 [warning  ] deepseek_7b_failed             attempt=3 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:48:27 [warning  ] gemini_generation_failed       error="'parts'"
+2026-06-11 14:48:27 [info     ] hypotheses_generated           count=3 difficulty=low ratchet=1 theorem=rlcf_lyapunov_decrease
+2026-06-11 14:48:30 [info     ] ratchet_retry                  difficulty=low errors=3 iter=1 theorem=rlcf_lyapunov_decrease
+2026-06-11 14:48:30 [warning  ] leanbert_models_not_found      msg='Using tactic template fallback'
+2026-06-11 14:48:30 [warning  ] deepseek_7b_failed             attempt=0 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:48:30 [warning  ] deepseek_7b_failed             attempt=1 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:48:30 [warning  ] deepseek_7b_failed             attempt=2 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:48:30 [warning  ] deepseek_7b_failed             attempt=3 error='<urlopen error [Errno 61] Connection refused>'
+2026-06-11 14:48:47 [warning  ] gemini_generation_failed       error="'parts'"
+2026-06-11 14:48:47 [info     ] hypotheses_generated           count=3 difficulty=low ratchet=2 theorem=rlcf_lyapunov_decrease
+2026-06-11 14:48:50 [info     ] ratchet_retry                  difficulty=low errors=3 iter=2 theorem=rlcf_lyapunov_decrease
+2026-06-11 14:48:50 [info     ] sweep_complete                 closed=0 cost=0.045 failed=5
+{
+  "sorrys_closed": 0,
+  "sorrys_failed": 5,
+  "total_hypotheses_generated": 45,
+  "total_hypotheses_compiled": 0,
+  "total_cost_usd": 0.045,
+  "elapsed_s": 294.7,
+  "results": [
+    {
+      "theorem": "mass_conservation",
+      "file": "Agora/Conservation.lean",
+      "difficulty": "low",
+      "status": "failed",
+      "ratchet_iterations": 3,
+      "n_hypotheses": 9,
+      "n_compiled": 0,
+      "best_proof": null,
+      "best_score": null,
+      "best_source": null
+    },
+    {
+      "theorem": "energy_conservation_isolated",
+      "file": "Agora/Conservation.lean",
+      "difficulty": "low",
+      "status": "failed",
+      "ratchet_iterations": 3,
+      "n_hypotheses": 9,
+      "n_compiled": 0,
+      "best_proof": null,
+      "best_score": null,
+      "best_source": null
+    },
+    {
+      "theorem": "lora_param_efficiency",
+      "file": "Agora/LoRA.lean",
+      "difficulty": "medium",
+      "status": "failed",
+      "ratchet_iterations": 3,
+      "n_hypotheses": 9,
+      "n_compiled": 0,
+      "best_proof": null,
+      "best_score": null,
+      "best_source": null
+    },
+    {
+      "theorem": "rlcf_monotone_descent",
+      "file": "Agora/RLCF.lean",
+      "difficulty": "low",
+      "status": "failed",
+      "ratchet_iterations": 3,
+      "n_hypotheses": 9,
+      "n_compiled": 0,
+      "best_proof": null,
+      "best_score": null,
+      "best_source": null
+    },
+    {
+      "theorem": "rlcf_lyapunov_decrease",
+      "file": "Agora/RLCF.lean",
+      "difficulty": "low",
+      "status": "failed",
+      "ratchet_iterations": 3,
+      "n_hypotheses": 9,
+      "n_compiled": 0,
+      "best_proof": null,
+      "best_score": null,
+      "best_source": null
+    }
+  ]
+}

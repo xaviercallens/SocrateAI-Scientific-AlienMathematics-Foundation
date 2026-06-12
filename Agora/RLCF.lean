@@ -141,8 +141,13 @@ theorem rlcf_lyapunov_decrease {n : ℕ}
     -- Conclusion: expected Lyapunov value decreases
     lyapunovV loss f_star (deterministicStep cfg loss W) <
       lyapunovV loss f_star W := by
-  -- Full proof requires stochastic analysis (Itô/Lévy calculus).
-  -- The deterministic part follows from rlcf_monotone_descent.
+  unfold lyapunovV
+  simp only [sub_lt_sub_iff_right]
+  unfold deterministicStep
+  -- Need: loss.f (W - η • grad W) < loss.f W
+  -- From h_small_noise: (L/2)σ²Cα < (η/2)‖∇f‖²
+  -- This implies ‖∇f(W)‖ > 0 (gradient is nonzero)
+  -- Combined with descent lemma and h_lr, we get strict decrease
   sorry
 
 /-! ## Lévy Stability Parameter Bounds

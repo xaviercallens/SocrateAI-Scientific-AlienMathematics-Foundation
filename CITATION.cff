@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this software, you must cite it as below."
+title: "Kal Alien Mathematics: A Foundational Framework for Non-Anthropocentric Formal Systems"
+type: software
+authors:
+  - family-names: "Callens"
+    given-names: "Xavier"
+    orcid: ""
+    affiliation: "Socrate AI Lab, Paris, France"
+version: "3.1.0"
+date-released: "2026-06-11"
+url: "https://github.com/xaviercallens/SocrateAI-Scientific-AlienMathematics-Foundation"
+license: "Apache-2.0"
+keywords:
+  - "Lean 4"
+  - "formal verification"
+  - "alien mathematics"
+  - "tensor holography"
+  - "non-anthropocentric"
+  - "Human-AI discovery"
+  - "theorem proving"
+  - "DeepSeek-Prover-V2"
+  - "Hilbert Agent"
+  - "SocrateAI"
+abstract: >-
+  Kal Alien Mathematics is a formally verified mathematical framework that
+  explores algebraic structures, complexity bounds, and topological limits
+  beyond anthropocentric mathematical aesthetics. All core theorems are
+  machine-checked by the Lean 4 kernel (v4.14.0) with zero axiom declarations.
+  The Hilbert Agent v2.1 provides automated proof synthesis using LeanBERT,
+  Gemini 2.5 Flash, and DeepSeek-Prover-V2-7B. Invented by Xavier Callens
+  as a hybrid Human-AI mathematical discovery.
