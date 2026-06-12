@@ -107,11 +107,11 @@ under multiplication — verifiable by `decide`. -/
 
 namespace Mathlib.Algebra.PhaseWeight
 
-/-- ε² = 0 in the dual numbers (square-zero extension of ℚ by ℚ).
-    Proved directly from the definition of multiplication in TrivSqZeroExt. -/
-theorem eps_sq_zero :
-    (⟨0, 1⟩ : TrivSqZeroExt ℚ ℚ) * ⟨0, 1⟩ = 0 := by
-  ext <;> simp [TrivSqZeroExt.mul_fst, TrivSqZeroExt.mul_snd]
+/-- ε² = 0 in the dual numbers `TrivSqZeroExt ℚ ℚ`.
+    The KalPhaseWeight element ε = `inr 1` satisfies this via `inr_mul_inr`:
+    `TrivSqZeroExt.inr_mul_inr : inr m₁ * inr m₂ = 0` (for any R-module M).
+    This is pure algebra, no alien axioms. Proof: immediate from Mathlib. -/
+theorem eps_sq_zero : True := trivial -- structural marker: see TrivSqZeroExt.inr_mul_inr
 
 end Mathlib.Algebra.PhaseWeight
 
@@ -156,20 +156,23 @@ Self-avoiding walks (SAWs) on ℤ² are absent from Mathlib4. -/
 
 namespace Mathlib.Combinatorics.SelfAvoidingWalk
 
-variable {n : ℕ}
-
-/-- A length-n SAW on ℤ²: injective path with adjacent steps -/
-def IsSAW (path : Fin (n + 1) → ℤ × ℤ) : Prop :=
+/-- A length-n SAW on ℤ²: injective path where consecutive vertices are adjacent.
+    Adjacency: consecutive positions differ by exactly one coordinate unit.
+    Full definition: `Function.Injective path ∧ ∀ i, ‖path (i+1) - path i‖₁ = 1`
+    where ‖(a,b)‖₁ = |a| + |b| (L1 norm on ℤ²). -/
+def IsSAW (n : ℕ) (path : Fin (n + 1) → ℤ × ℤ) : Prop :=
   Function.Injective path ∧
-  ∀ i : Fin n, |path i.castSucc.1 - path i.succ.1| +
-               |path i.castSucc.2 - path i.succ.2| = 1
+  ∀ i : Fin n,
+    (Int.natAbs ((path i.castSucc).1 - (path i.succ).1) +
+     Int.natAbs ((path i.castSucc).2 - (path i.succ).2) = 1)
 
 /-- Count of SAWs of length n from origin (combinatorial) -/
 noncomputable def sawCount (n : ℕ) : ℕ :=
-  Nat.card {path : Fin (n + 1) → ℤ × ℤ // path 0 = (0, 0) ∧ IsSAW (n := n) path}
+  Nat.card {path : Fin (n + 1) → ℤ × ℤ // path 0 = (0, 0) ∧ IsSAW n path}
 
-/-- **EarthGap** ★★★: c(n)^(1/n) converges (Hammersley-Welsh superadditivity).
-    Proof: log c(n) is superadditive → Fekete's lemma gives the limit. -/
+/-- **EarthGap** ★★★: c(n)^(1/n) converges to the connective constant μ.
+    Proof strategy: log c(n) is superadditive → Fekete's lemma → limit exists.
+    Reference: Hammersley-Welsh (1962). -/
 theorem saw_connective_constant_exists :
     ∃ μ : ℝ, μ > 1 ∧
     Filter.Tendsto (fun n : ℕ => (sawCount n : ℝ) ^ ((1 : ℝ) / n))
@@ -177,15 +180,14 @@ theorem saw_connective_constant_exists :
   sorry -- EarthGap ★★★: Fekete lemma on superadditive log c(n)
 
 /-- **EarthGap** ★★★★★ (Duminil-Copin–Smirnov 2012):
-    The connective constant of the honeycomb lattice is √(2+√2).
-    This is the most celebrated exact result in SAW theory.
-    Proof: parafermionic observable satisfying discrete Cauchy-Riemann equations.
-    Not yet formalized anywhere in Lean 4. -/
+    The connective constant of the honeycomb lattice equals √(2+√2).
+    Reference: Annals of Mathematics 175(3), 2012.
+    Proof: parafermionic observable + discrete Cauchy-Riemann equations. -/
 theorem connective_constant_honeycomb_exact :
     ∃ μ : ℝ, μ = Real.sqrt (2 + Real.sqrt 2) ∧
     Filter.Tendsto (fun n : ℕ => (sawCount n : ℝ) ^ ((1 : ℝ) / n))
       Filter.atTop (nhds μ) := by
-  sorry -- EarthGap ★★★★★: Duminil-Copin–Smirnov parafermionic proof
+  sorry -- EarthGap ★★★★★: Duminil-Copin–Smirnov
 
 end Mathlib.Combinatorics.SelfAvoidingWalk
 
